@@ -19,7 +19,7 @@
         <TextBox Name="txtBoxPrix" HorizontalAlignment="Left" Height="23" Margin="552,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
         <TextBox Name="txtBoxDescri" HorizontalAlignment="Left" MaxLength="256" Height="156" Margin="552,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
         <Button Name="btnAjout" Click="btnAjout_Click" Content="Ajouter ce plat" HorizontalAlignment="Left" Margin="120,90,0,0" VerticalAlignment="Top" Width="112" Height="20"/>
-        <Button Content="Passer la commande" HorizontalAlignment="Left" Margin="120,345,0,0" VerticalAlignment="Top" Width="112" Height="32"/>
+        <Button Name="btnCommande" Click="btnCommande_Click"  Content="Passer la commande" HorizontalAlignment="Left" Margin="120,345,0,0" VerticalAlignment="Top" Width="112" Height="32" />
         <ListBox Name="listBoxCommande" HorizontalAlignment="Left" Height="100" Margin="91,170,0,0" VerticalAlignment="Top" Width="182"/>
         <Button Name="btnSupprimer" Click="btnSupprimer_Click" Content="Supprimer ce plat" HorizontalAlignment="Left" Margin="120,134,0,0" VerticalAlignment="Top" Width="112"/>
 

@@ -81,7 +81,11 @@ namespace WpfBdd
             monCompte.ShowDialog();
             if (monCompte.IsActive == false)
             {
-                this.ShowDialog();
+                try
+                {
+                    this.ShowDialog();
+                }
+                catch { }
             }
         }
 

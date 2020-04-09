@@ -90,5 +90,29 @@ namespace WpfBdd
             listBoxCommande.Items.Refresh();
 
         }
+
+        private void btnCommande_Click(object sender, RoutedEventArgs e)
+        {
+            MySqlCommand commande = this.connexion.CreateCommand();
+            commande.CommandText = "SELECT * FROM recette WHERE idRecette='" + comboBoxRecette.Text.ToString().Substring(0, 4) + "';";
+            MySqlDataReader reader;
+            
+            foreach(string eleme in listChoix)
+            {
+                commande.CommandText = "SELECT * FROM estconstitue WHERE idRecette='" + eleme.Substring(0, 4) + "';";
+                reader = commande.ExecuteReader(); ;
+                while(reader.Read())
+                {
+
+                }
+                reader.Close();
+            }
+
+
+
+           
+
+
+        }
     }
 }

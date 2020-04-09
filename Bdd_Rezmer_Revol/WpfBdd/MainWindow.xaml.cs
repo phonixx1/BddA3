@@ -106,7 +106,11 @@ namespace WpfBdd
                     menuClient.ShowDialog();
                     if (menuClient.IsActive == false)
                     {
-                        this.ShowDialog();
+                        try
+                        {
+                            this.ShowDialog();
+                        }
+                        catch { }
                     }
                 }
                 else
