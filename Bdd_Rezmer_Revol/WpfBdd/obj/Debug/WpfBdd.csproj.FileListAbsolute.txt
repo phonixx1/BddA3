@@ -75,3 +75,11 @@ C:\Users\Philbert\Documents\GitHub\Projet_Bdd_A3\Bdd_Rezmer_Revol\WpfBdd\obj\Deb
 C:\Users\Philbert\Documents\GitHub\Projet_Bdd_A3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenGererCompte.baml
 C:\Users\Philbert\Documents\GitHub\Projet_Bdd_A3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenMenuCommande.g.cs
 C:\Users\Philbert\Documents\GitHub\Projet_Bdd_A3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenMenuCommande.baml
+C:\Users\Philbert\Documents\GitHub\Projet_Bdd_A3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\ConnexionAdmin.g.cs
+C:\Users\Philbert\Documents\GitHub\Projet_Bdd_A3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenGestionCooking.g.cs
+C:\Users\Philbert\Documents\GitHub\Projet_Bdd_A3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\ConnexionAdmin.baml
+C:\Users\Philbert\Documents\GitHub\Projet_Bdd_A3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenGestionCooking.baml
+C:\Users\Philbert\Documents\GitHub\Projet_Bdd_A3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenSupCuisinier.g.cs
+C:\Users\Philbert\Documents\GitHub\Projet_Bdd_A3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenSupRecette.g.cs
+C:\Users\Philbert\Documents\GitHub\Projet_Bdd_A3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenSupCuisinier.baml
+C:\Users\Philbert\Documents\GitHub\Projet_Bdd_A3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenSupRecette.baml

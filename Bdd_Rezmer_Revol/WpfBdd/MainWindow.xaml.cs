@@ -81,6 +81,18 @@ namespace WpfBdd
             this.ShowDialog();
         }
 
+        private void btnAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            FenGestionCooking gestion = new FenGestionCooking(this.connexion);
+            this.Hide();
+            gestion.Owner = this;
+            gestion.ShowDialog();
+            if (gestion.IsActive == false)
+            {
+                this.ShowDialog();
+            }
+        }
+
         public void btnConnexion_Click(object sender, RoutedEventArgs e)
         {
             

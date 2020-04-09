@@ -88,7 +88,6 @@ namespace WpfBdd
               }
             
             listBoxCommande.Items.Refresh();
-
         }
     }
 }

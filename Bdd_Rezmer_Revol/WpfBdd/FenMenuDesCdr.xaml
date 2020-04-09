@@ -5,8 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfBdd"
         mc:Ignorable="d"
-        Title="Menu créateur de recettes" Height="450" Width="800"
-        Closing="Fermeture">
+        Title="Menu créateur de recettes" Height="450" Width="800">
     <Grid>
         <Label Content="Menu créateur de recettes" FontFamily="comic sans ms" FontSize="20" Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Top" Width="285" Height="45"   />
         <Label Content="  Ajouter une recette :" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="211" Height="45" Margin="228,90,354.6,0"   />

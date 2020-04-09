@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
-using System.ComponentModel;
 
 namespace WpfBdd
 {
@@ -69,16 +68,6 @@ namespace WpfBdd
             soldeCook = reader.GetValue(0).ToString();
             reader.Close();
             MessageBox.Show("Vous avez actuellement "+soldeCook+" cook(s)", "Attention", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-        }
-
-        void Fermeture(object sender, CancelEventArgs e)
-        {
-            string msg = "Voulez vous vraiment quitter ce menu et revenir au menu client ?";
-            MessageBoxResult result = MessageBox.Show(msg, "Attention", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-            if (result == MessageBoxResult.No)
-            {
-                e.Cancel = true;
-            }
         }
     }
 }

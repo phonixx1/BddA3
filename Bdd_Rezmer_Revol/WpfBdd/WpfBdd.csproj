@@ -82,6 +82,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ConnexionAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FenAjoutClient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -91,6 +95,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="FenGererCompte.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FenGestionCooking.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -114,6 +122,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FenSupCuisinier.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FenSupRecette.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -125,6 +141,9 @@
     <Compile Include="Connexion.xaml.cs">
       <DependentUpon>Connexion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ConnexionAdmin.xaml.cs">
+      <DependentUpon>ConnexionAdmin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FenAjoutClient.xaml.cs">
       <DependentUpon>FenAjoutClient.xaml</DependentUpon>
     </Compile>
@@ -133,6 +152,9 @@
     </Compile>
     <Compile Include="FenGererCompte.xaml.cs">
       <DependentUpon>FenGererCompte.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FenGestionCooking.xaml.cs">
+      <DependentUpon>FenGestionCooking.xaml</DependentUpon>
     </Compile>
     <Compile Include="FenListeProduitsRecette.xaml.cs">
       <DependentUpon>FenListeProduitsRecette.xaml</DependentUpon>
@@ -148,6 +170,12 @@
     </Compile>
     <Compile Include="FenMesRecettes.xaml.cs">
       <DependentUpon>FenMesRecettes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FenSupCuisinier.xaml.cs">
+      <DependentUpon>FenSupCuisinier.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FenSupRecette.xaml.cs">
+      <DependentUpon>FenSupRecette.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
