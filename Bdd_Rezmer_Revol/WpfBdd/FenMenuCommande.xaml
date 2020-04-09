@@ -1,0 +1,27 @@
+﻿<Window x:Class="WpfBdd.FenMenuCommande"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfBdd"
+        mc:Ignorable="d"
+        Title="FenMenuCommande" Height="450" Width="800">
+    <Grid>
+        <ComboBox Name="comboBoxRecette" HorizontalAlignment="Left" Margin="52,30,0,0" VerticalAlignment="Top" Width="250" DropDownClosed="comboBoxRecette_DropDownClosed"/>
+        <Label Content="Numero de plat:" HorizontalAlignment="Left" Margin="383,30,0,0" VerticalAlignment="Top" Width="102" />
+        <Label Content="Nom:" HorizontalAlignment="Left" Margin="383,70,0,0" VerticalAlignment="Top" Width="102" />
+        <Label Content="Type de plat:" HorizontalAlignment="Left" Margin="383,130,0,0" VerticalAlignment="Top" Width="102" />
+        <Label Content="Prix:" HorizontalAlignment="Left" Margin="383,170,0,0" VerticalAlignment="Top" Width="102" />
+        <Label Content="Descriptif:" HorizontalAlignment="Left" Margin="383,210,0,0" VerticalAlignment="Top" Width="102" />
+        <TextBox Name="txtBoxNum" HorizontalAlignment="Left" MaxLength="4" Height="23" Margin="552,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+        <TextBox Name="txtBoxNom" HorizontalAlignment="Left" MaxLength="50" Height="40" Margin="552,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+        <TextBox Name="txtBoxType" HorizontalAlignment="Left" MaxLength="20" Height="23" Margin="552,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+        <TextBox Name="txtBoxPrix" HorizontalAlignment="Left" Height="23" Margin="552,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+        <TextBox Name="txtBoxDescri" HorizontalAlignment="Left" MaxLength="256" Height="156" Margin="552,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+        <Button Name="btnAjout" Click="btnAjout_Click" Content="Ajouter ce plat" HorizontalAlignment="Left" Margin="120,90,0,0" VerticalAlignment="Top" Width="112" Height="20"/>
+        <Button Content="Passer la commande" HorizontalAlignment="Left" Margin="120,345,0,0" VerticalAlignment="Top" Width="112" Height="32"/>
+        <ListBox Name="listBoxCommande" HorizontalAlignment="Left" Height="100" Margin="91,170,0,0" VerticalAlignment="Top" Width="182"/>
+        <Button Name="btnSupprimer" Click="btnSupprimer_Click" Content="Supprimer ce plat" HorizontalAlignment="Left" Margin="120,134,0,0" VerticalAlignment="Top" Width="112"/>
+
+    </Grid>
+</Window>

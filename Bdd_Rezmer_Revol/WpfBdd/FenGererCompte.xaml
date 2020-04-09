@@ -1,0 +1,24 @@
+﻿<Window x:Class="WpfBdd.FenGererCompte"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfBdd"
+        mc:Ignorable="d"
+        Title="Gérer son compte" Height="450" Width="800"
+        Closing="Fermeture">
+    <Grid>
+        <Label Content="Gérer mon compte" FontFamily="comic sans ms" FontSize="20" Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Top" Width="184" Height="45" Margin="315,0,294.6,0"   />
+        <Label Content="  Changer mon id :" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="211" Height="45" Margin="36,105,546.6,0"   />
+        <Label Content="  Changer mon mot de passe :" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="260" Height="33" Margin="36,161,497.6,0"   />
+        <Label Content="Changer mon numéro de téléphone :" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="315" Height="45" Margin="51,214,427.6,0"   />
+        <Button Name="btnChangerId" Content="Valider" HorizontalAlignment="Center" Click="btnChangerId_Click"  Margin="629,100,44.6,0" VerticalAlignment="Top" Height="30" Width="120"/>
+        <Button Name="btnChangerMdp" Content="Valider" Click="btnChangerMdp_Click" HorizontalAlignment="Center" Margin="629,161,44.6,0" VerticalAlignment="Top" Height="27" Width="120"/>
+        <Button Name="btnChangerNumTel" Content="Valider" Click="btnChangerNumTel_Click" HorizontalAlignment="Center" Margin="629,220,44.6,0" VerticalAlignment="Top" Height="27" Width="120" RenderTransformOrigin="2.247,0.88"/>
+        <Button Name="btnRetour" Content="Retour" Click="btnRetour_Click" HorizontalAlignment="Center" Margin="345,360,330.6,0" VerticalAlignment="Top" Height="30" Width="118"/>
+        <Button Name="btnDeleteCompte" Content="Supprimer mon compte" Click="btnDeleteCompte_Click" HorizontalAlignment="Center" Margin="315,298,307.6,0" VerticalAlignment="Top" Height="30" Width="171"/>
+        <TextBox Name="txtNewId" HorizontalAlignment="Left" MaxLength="25" Height="25" Margin="422,105,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150"/>
+        <TextBox Name="txtNewMdp" HorizontalAlignment="Left" MaxLength="25" Height="25" Margin="422,161,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150"/>
+        <TextBox Name="txtNumTel" HorizontalAlignment="Left" MaxLength="25" Height="25" Margin="422,222,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150"/>
+    </Grid>
+</Window>

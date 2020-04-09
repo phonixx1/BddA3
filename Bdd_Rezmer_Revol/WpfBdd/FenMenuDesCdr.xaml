@@ -1,0 +1,21 @@
+﻿<Window x:Class="WpfBdd.FenMenuDesCdr"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfBdd"
+        mc:Ignorable="d"
+        Title="Menu créateur de recettes" Height="450" Width="800"
+        Closing="Fermeture">
+    <Grid>
+        <Label Content="Menu créateur de recettes" FontFamily="comic sans ms" FontSize="20" Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Top" Width="285" Height="45"   />
+        <Label Content="  Ajouter une recette :" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="211" Height="45" Margin="228,90,354.6,0"   />
+        <Label Content="  Consulter son solde cook :" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="245" Height="45" Margin="194,155,354.6,0"   />
+        <Label Content="       Afficher mes recettes :" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="245" Height="45" Margin="194,214,354.6,0"   />
+        <Button Name="btnAjoutRecette" Content="Valider" HorizontalAlignment="Center" Click="btnAjoutRecette_Click"  Margin="475,94,185,0" VerticalAlignment="Top" Height="30" Width="120"/>
+        <Button Name="btnSoldeCook" Content="Valider" Click="btnSoldeCook_Click" HorizontalAlignment="Center" Margin="482,161,191.6,0" VerticalAlignment="Top" Height="27" Width="120"/>
+        <Button Name="btnMesRecettes" Content="Valider" Click="btnMesRecettes_Click" HorizontalAlignment="Center" Margin="482,220,191.6,0" VerticalAlignment="Top" Height="27" Width="120" RenderTransformOrigin="2.247,0.88"/>
+        <Button Name="btnRetour" Content="Retour" Click="btnRetour_Click" HorizontalAlignment="Center" Margin="341,314,334.6,0" VerticalAlignment="Top" Height="30" Width="118"/>
+
+    </Grid>
+</Window>

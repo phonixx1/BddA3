@@ -1,0 +1,23 @@
+﻿<Window x:Class="WpfBdd.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfBdd"
+        mc:Ignorable="d"
+        Title="Application Cooking" Height="450" Width="800"
+        Closing="Fermeture">
+
+    <Grid>
+        <Label Content="Bienvenue sur Cooking" FontFamily="comic sans ms" FontSize="24" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Top" Width="260" Height="45" Margin="277,41,256.6,0"  />
+        <Label Content="Id client" FontFamily="comic sans ms" FontSize="20"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="126" Height="45" Margin="249,150,0,0"  />
+        <Label Content="Mot de passe" FontFamily="comic sans ms" FontSize="20"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="144" Height="45" Margin="249,230,0,0"  />
+        <Label Content="Accès client" FontWeight="Bold" FontFamily="comic sans ms" FontSize="20"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="126" Height="45" Margin="90,150,0,0"  />
+        <TextBox Name="txtBoxId" HorizontalAlignment="Left" KeyDown="boxMdp_KeyDown" MaxLength="25" Height="25" Margin="494,150,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150"/>
+        <PasswordBox Name="boxMdp" PasswordChar="*" KeyDown="boxMdp_KeyDown" MaxLength="20" Margin="494,230,0,0"  Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25"/>
+        <Button Content="Accès Admin" FontWeight="Bold" FontFamily="comic sans ms" FontSize="20"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="45" Margin="411,330,0,0"/>
+        <Button Name="btnNewClient" Content="Nouveau client" Click="btnNewClient_Click" FontWeight="Bold" FontFamily="comic sans ms" FontSize="20"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="45" Margin="25,330,0,0"/>
+        <Button Content="Démo" FontWeight="Bold" FontFamily="comic sans ms" FontSize="20"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="45" Margin="217,330,0,0"/>
+        <Button Name="btn_Connexion" Content="Se connecter" Click="btnConnexion_Click" FontWeight="Bold" FontFamily="comic sans ms" FontSize="20"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="45" Margin="601,330,0,0"/>
+    </Grid>
+</Window>
