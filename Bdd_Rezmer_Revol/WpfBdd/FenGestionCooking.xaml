@@ -1,0 +1,21 @@
+﻿<Window x:Class="WpfBdd.FenGestionCooking"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfBdd"
+        mc:Ignorable="d"
+        Title="Gestionnaire de Cooking" Height="687.6" Width="800">
+    <Grid>
+        <Label Content="Tableau de bord" FontFamily="comic sans ms" FontSize="20" Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Top" Width="167" Height="45" Margin="320,10,306.6,0"   />
+        <Label Content="CdR de la semaine :" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="175" Height="45" Margin="63,93,555.6,0"   />
+        <TextBox Name="txtCdrWeek" HorizontalAlignment="Left" MaxLength="4" Height="23" Margin="304,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+        <Label Content="CdR d'or :" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="98" Height="45" Margin="140,138,555.6,0"   />
+        <TextBox Name="txtGoldenCdr" HorizontalAlignment="Left" MaxLength="4" Height="23" Margin="304,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+        <Label Content="Top 5 des recettes" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="171" Height="45" Margin="320,221,302.6,0"   />
+        <DataGrid Name="dataGridTop5" AutoGenerateColumns="True" HorizontalAlignment="Left" Height="312" Margin="10,266,0,0" VerticalAlignment="Top" Width="774"/>
+        <Button Name="btnRetour" Click="btnRetour_Click" Content="Retour" HorizontalAlignment="Center" Margin="341,605,332.6,0" VerticalAlignment="Top" Height="30" Width="120" RenderTransformOrigin="0.361,0.58"/>
+        <Button Name="btnSupprimerRecette" Click="btnSupprimerRecette_Click" Content="Supprimer une recette" HorizontalAlignment="Center" Margin="95,605,567.6,0" VerticalAlignment="Top" Height="30" Width="131"/>
+        <Button Name="btnSupprimerCuisinier" Click="btnSupprimerCuisinier_Click" Content="Supprimer un cuisinier" HorizontalAlignment="Center" Margin="572,605,91.6,0" VerticalAlignment="Top" Height="30" Width="130"/>
+    </Grid>
+</Window>

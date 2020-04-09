@@ -88,7 +88,6 @@ namespace WpfBdd
               }
             
             listBoxCommande.Items.Refresh();
-
         }
 
         private void btnCommande_Click(object sender, RoutedEventArgs e)
