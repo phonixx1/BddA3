@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Philbert\Documents\GitHub\Projet_Bdd_A3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\
+C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\
 WpfBdd
 none
 false
 DEBUG;TRACE
-C:\Users\Philbert\Documents\GitHub\Projet_Bdd_A3\Bdd_Rezmer_Revol\WpfBdd\App.xaml
-14960859173
+C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\App.xaml
+12-464727600
 
-19-1647903132
-26-1624687433
-Connexion.xaml;ConnexionAdmin.xaml;FenAjoutClient.xaml;FenAjoutRecetteCdr.xaml;FenGererCompte.xaml;FenGestionCooking.xaml;FenListeProduitsRecette.xaml;FenMenuClients.xaml;FenMenuCommande.xaml;FenMenuDesCdr.xaml;FenMesRecettes.xaml;FenSupCuisinier.xaml;FenSupRecette.xaml;MainWindow.xaml;
+17-486527469
+26915160102
+Connexion.xaml;ConnexionAdmin.xaml;FenAjoutClient.xaml;FenAjoutRecetteCdr.xaml;FenGererCompte.xaml;FenGestionCooking.xaml;FenListeProduitsRecette.xaml;FenMenuClients.xaml;FenMenuCommande.xaml;FenMenuDesCdr.xaml;FenMesRecettes.xaml;MainWindow.xaml;
 
-True
+False
 

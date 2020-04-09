@@ -122,14 +122,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FenSupCuisinier.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="FenSupRecette.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -170,12 +162,6 @@
     </Compile>
     <Compile Include="FenMesRecettes.xaml.cs">
       <DependentUpon>FenMesRecettes.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="FenSupCuisinier.xaml.cs">
-      <DependentUpon>FenSupCuisinier.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="FenSupRecette.xaml.cs">
-      <DependentUpon>FenSupRecette.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

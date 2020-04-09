@@ -79,7 +79,6 @@ namespace WpfBdd
             {
                 e.Column.IsReadOnly = true;
             }
-
             if (e.PropertyName == "uniteDeQuantite")
             {
                 e.Column.IsReadOnly = true;

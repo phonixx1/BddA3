@@ -65,24 +65,48 @@ namespace WpfBdd
             this.DialogResult = true;
         }
 
-        private void btnSupprimerRecette_Click(object sender, RoutedEventArgs e)
+        void recette_Combo()
         {
-            FenSupRecette supRecette = new FenSupRecette(this.connexion);
-            this.Hide();
-            supRecette.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            supRecette.Owner = this;
-            supRecette.ShowDialog();
-            this.ShowDialog();
+            MySqlCommand commande = this.connexion.CreateCommand();
+            commande.CommandText = "SELECT nomRecette FROM recette;";
+            MySqlDataReader reader = commande.ExecuteReader();
+            while (reader.Read())
+            {
+                string nomRecette = reader.GetString(0);
+                comboBoxRecette.Items.Add(nomRecette);
+            }
+            reader.Close();
         }
-        private void btnSupprimerCuisinier_Click(object sender, RoutedEventArgs e)
+
+        void cuisinier_Combo()
         {
-            FenSupCuisinier supCuisinier = new FenSupCuisinier(this.connexion);
-            this.Hide();
-            supCuisinier.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            supCuisinier.Owner = this;
-            supCuisinier.ShowDialog();
-            this.ShowDialog();
+            MySqlCommand commande = this.connexion.CreateCommand();
+            commande.CommandText = "SELECT idCuisinier FROM cuisinier;";
+            MySqlDataReader reader = commande.ExecuteReader();
+            while (reader.Read())
+            {
+                string nomCuisinier = reader.GetString(0);
+                comboBoxRecette.Items.Add(nomCuisinier);
+            }
+            reader.Close();
         }
+
+
+        private void comboBoxRecette_DropDownClosed(object sender, EventArgs e)
+        {
+            MySqlCommand commande = this.connexion.CreateCommand();
+            commande.CommandText = "DELETE * FROM recette WHERE nomRecette='"+ comboBoxRecette.Text.ToString() + "';";
+            commande.ExecuteNonQuery();
+        }
+
+        private void comboBoxCuisinier_DropDownClosed(object sender, EventArgs e)
+        {
+            MySqlCommand commande = this.connexion.CreateCommand();
+            commande.CommandText = "DELETE * FROM cuisinier WHERE idCuisinier='" + comboBoxCuisinier.Text.ToString() + "';";
+            commande.ExecuteNonQuery();
+        }
+        //Name="btnSupprimerRecette" Click="btnSupprimerRecette_Click"
+        //Name="btnSupprimerCuisinier" Click="btnSupprimerCuisinier_Click"
 
     }
 }
