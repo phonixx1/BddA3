@@ -38,11 +38,10 @@ namespace WpfBdd
         private void btnSuivant_Click(object sender, RoutedEventArgs e)
         {
             FenDemo4 demo4 = new FenDemo4(this.connexion);
-            this.Hide();
+            this.Close();
             demo4.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            demo4.Owner = this;
-            demo4.ShowDialog();
-            this.ShowDialog();
+            demo4.Show();
+            this.Close();
         }
     }
 }

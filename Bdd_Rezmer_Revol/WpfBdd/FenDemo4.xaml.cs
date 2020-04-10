@@ -42,9 +42,8 @@ namespace WpfBdd
             FenDemo5 demo5 = new FenDemo5(this.connexion,this.tableProduit);
             this.Hide();
             demo5.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            demo5.Owner = this;
-            demo5.ShowDialog();
-            this.ShowDialog();
+            demo5.Show();
+            this.Close();
         }
 
         private void dataGridProduit_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
