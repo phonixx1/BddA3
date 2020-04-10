@@ -1,0 +1,15 @@
+﻿<Window x:Class="WpfBdd.FenDemo4"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfBdd"
+        mc:Ignorable="d"
+        Title="FenDemo4" Height="615.367" Width="800">
+    <Grid>
+        <Label Content="Mode démo Cooking" FontWeight="Bold" FontFamily="comic sans ms" FontSize="24" Foreground="Orange" HorizontalAlignment="Center" VerticalAlignment="Top" Width="235" Height="45" Margin="287,30,271.6,0"  />
+        <Button Name="btnSuivant" Click="btnSuivant_Click" Content="Suivant" FontSize="20"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="45" Margin="318,503,0,0"/>
+        <DataGrid Name="dataGridProduit" AutoGeneratingColumn="dataGridProduit_AutoGeneratingColumn"  HorizontalAlignment="Left" Height="393" Margin="101,80,0,0" VerticalAlignment="Top" Width="589"/>
+
+    </Grid>
+</Window>

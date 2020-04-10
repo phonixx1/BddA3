@@ -129,3 +129,13 @@ C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\WpfBd
 C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\WpfBdd.csproj.GenerateResource.cache
 C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\WpfBdd.csproj.CoreCompileInputs.cache
 C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\WpfBdd.csproj.CopyComplete
+C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenDemo.g.cs
+C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenDemo2.g.cs
+C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenDemo3.g.cs
+C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenDemo4.g.cs
+C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenDemo5.g.cs
+C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenDemo.baml
+C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenDemo2.baml
+C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenDemo3.baml
+C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenDemo4.baml
+C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenDemo5.baml

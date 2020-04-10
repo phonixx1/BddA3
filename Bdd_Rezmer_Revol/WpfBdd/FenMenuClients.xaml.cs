@@ -56,13 +56,21 @@ namespace WpfBdd
             command.CommandText = "SELECT soldeCook FROM client WHERE idCompte=\"" + idClient + "\";";
             reader = command.ExecuteReader();
             reader.Read();
-            if (reader.IsDBNull(0))
+            bool notCdR = reader.IsDBNull(0);
+            reader.Close();
+            if (notCdR)
             {
-                MessageBox.Show("Erreur : vous n'êtes pas enregistré(e) en tant que créateur de recette", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBoxResult choix = MessageBox.Show("Erreur : vous n'êtes pas enregistré(e) en tant que créateur de recette. Voulez-vous devenir un CdR ?", "Erreur", MessageBoxButton.OKCancel, MessageBoxImage.Asterisk);
+                if (choix == MessageBoxResult.OK)
+                {
+                    MySqlCommand commande = this.connexion.CreateCommand();
+                    commande.CommandText = "UPDATE client SET soldeCook=0 WHERE idCompte=\"" + idClient + "\";";
+                    commande.ExecuteNonQuery();
+                    MessageBox.Show("Vous êtes désormais un CdR", "Cooking App", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                } 
             }
             else
             {
-                reader.Close();
                 FenMenuDesCdr menuCdR = new FenMenuDesCdr(this.connexion);
                 menuCdR.Owner = this;
                 this.Hide();

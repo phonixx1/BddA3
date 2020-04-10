@@ -94,6 +94,26 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="FenDemo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FenDemo2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FenDemo3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FenDemo4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FenDemo5.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FenGererCompte.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -141,6 +161,21 @@
     </Compile>
     <Compile Include="FenAjoutRecetteCdr.xaml.cs">
       <DependentUpon>FenAjoutRecetteCdr.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FenDemo.xaml.cs">
+      <DependentUpon>FenDemo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FenDemo2.xaml.cs">
+      <DependentUpon>FenDemo2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FenDemo3.xaml.cs">
+      <DependentUpon>FenDemo3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FenDemo4.xaml.cs">
+      <DependentUpon>FenDemo4.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FenDemo5.xaml.cs">
+      <DependentUpon>FenDemo5.xaml</DependentUpon>
     </Compile>
     <Compile Include="FenGererCompte.xaml.cs">
       <DependentUpon>FenGererCompte.xaml</DependentUpon>

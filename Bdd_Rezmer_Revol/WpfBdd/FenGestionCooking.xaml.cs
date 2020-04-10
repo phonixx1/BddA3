@@ -25,8 +25,11 @@ namespace WpfBdd
     {
         MySqlConnection connexion;
         DataTable tableTop5;
+        static string recetteSupprimee;
+        static string cuisinierSupprime;
         public FenGestionCooking(MySqlConnection connexion)
         {
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
             this.connexion = connexion;
             ConnexionAdmin fenConnexion = new ConnexionAdmin(this.connexion);
@@ -56,8 +59,11 @@ namespace WpfBdd
             MySqlDataReader reader = commande.ExecuteReader();
             reader.Read();
             string cdrSemaine = reader.GetString(0);
+            reader.Close();
             txtCdrWeek.Text = cdrSemaine;
             txtGoldenCdr.Text = cdrSemaine;
+            recette_Combo();
+            cuisinier_Combo();
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)
@@ -86,7 +92,7 @@ namespace WpfBdd
             while (reader.Read())
             {
                 string nomCuisinier = reader.GetString(0);
-                comboBoxRecette.Items.Add(nomCuisinier);
+                comboBoxCuisinier.Items.Add(nomCuisinier);
             }
             reader.Close();
         }
@@ -94,19 +100,30 @@ namespace WpfBdd
 
         private void comboBoxRecette_DropDownClosed(object sender, EventArgs e)
         {
-            MySqlCommand commande = this.connexion.CreateCommand();
-            commande.CommandText = "DELETE * FROM recette WHERE nomRecette='"+ comboBoxRecette.Text.ToString() + "';";
-            commande.ExecuteNonQuery();
+            recetteSupprimee = comboBoxRecette.Text.ToString();   
         }
 
         private void comboBoxCuisinier_DropDownClosed(object sender, EventArgs e)
         {
-            MySqlCommand commande = this.connexion.CreateCommand();
-            commande.CommandText = "DELETE * FROM cuisinier WHERE idCuisinier='" + comboBoxCuisinier.Text.ToString() + "';";
-            commande.ExecuteNonQuery();
+            cuisinierSupprime = comboBoxCuisinier.Text.ToString();
         }
-        //Name="btnSupprimerRecette" Click="btnSupprimerRecette_Click"
-        //Name="btnSupprimerCuisinier" Click="btnSupprimerCuisinier_Click"
 
+        private void btnSupprimerRecette_Click(object sender, RoutedEventArgs e)
+        {
+            MySqlCommand commande = this.connexion.CreateCommand();
+            commande.CommandText = "DELETE FROM recette WHERE nomRecette=\"" + recetteSupprimee + "\";"; ;
+            commande.ExecuteNonQuery();
+            MessageBox.Show("La recette " + recetteSupprimee + " a bien été supprimée.", "Information", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            comboBoxRecette.Items.Remove(comboBoxRecette.SelectedItem);
+        }
+
+        private void btnSupprimerCuisinier_Click(object sender, RoutedEventArgs e)
+        {
+            MySqlCommand commande = this.connexion.CreateCommand();
+            commande.CommandText = "DELETE FROM cuisinier WHERE idCuisinier=\"" + cuisinierSupprime + "\";"; ;
+            commande.ExecuteNonQuery();
+            MessageBox.Show("Le cusinier " + cuisinierSupprime + " a bien été supprimé.", "Information", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            comboBoxCuisinier.Items.Remove(comboBoxCuisinier.SelectedItem);
+        }
     }
 }

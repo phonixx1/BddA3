@@ -93,6 +93,17 @@ namespace WpfBdd
             }
         }
 
+        private void btnDemo_Click(object sender, RoutedEventArgs e)
+        {
+            FenDemo demo = new FenDemo(this.connexion);
+            demo.Owner = this;
+            demo.ShowDialog();
+            if (demo.IsActive == false)
+            {
+                this.ShowDialog();
+            }
+        }
+
         public void btnConnexion_Click(object sender, RoutedEventArgs e)
         {
             
