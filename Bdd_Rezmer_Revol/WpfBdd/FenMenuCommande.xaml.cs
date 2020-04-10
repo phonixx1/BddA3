@@ -27,6 +27,7 @@ namespace WpfBdd
         public FenMenuCommande(MySqlConnection connexion)
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.connexion = connexion;
             recette_Combo();
             listBoxCommande.ItemsSource = listChoix;
@@ -99,34 +100,45 @@ namespace WpfBdd
         private void btnCommande_Click(object sender, RoutedEventArgs e)
         {
             MySqlCommand commande = this.connexion.CreateCommand();
-            commande.CommandText = "SELECT * FROM recette WHERE idRecette='" + comboBoxRecette.Text.ToString().Substring(0, 4) + "';";
+           // commande.CommandText = "SELECT * FROM recette WHERE idRecette='" + comboBoxRecette.Text.ToString().Substring(0, 4) + "';";
             bool commandeBonne = true;
+            string msg;
+            FenNbDeCommande fenQuantite;
+            string nombre;
             //MySqlDataReader reader;
             
             foreach(string eleme in listChoix)
             {
-                commande.CommandText = "select idProduit from estconstitue natural join produit where idRecette='" + eleme.Substring(0, 4) + "' and estconstitue.quantiteUtilisee>produit.stockActuel;";
+                fenQuantite = new FenNbDeCommande(eleme);
+                fenQuantite.ShowDialog();
+                if(fenQuantite.DialogResult==false)
+                {
+                    nombre = "1";
+                }
+                else
+                {
+                    nombre = fenQuantite.Nombre;
+                }
+
+                commande.CommandText = "select idProduit from estconstitue natural join produit where idRecette='" + eleme.Substring(0, 4) + "' and "+ nombre + "*estconstitue.quantiteUtilisee>produit.stockActuel;";
                 if(commande.ExecuteNonQuery()>0)
                 {
                     commandeBonne = false;
                     listChoix.Remove(eleme);
+                    msg = "Pas assez de produit pour " + nombre + " " + eleme;
+                    MessageBox.Show(msg);
                 }
 
             }
             if(commandeBonne)
             {
-
+                MessageBox.Show("Commande Validée tout les produits sont disponibles");
             }
             else
             {
-
+                MessageBox.Show("Les recettes dont les produits ne sont pas disponibles ont été enlevé. Veuillez verifiez votre commande");
             }
 
-
-
-           
-            
-
-        }
+         }
     }
 }

@@ -28,6 +28,7 @@ namespace WpfBdd
         public FenMenuClients(MySqlConnection connexion)
         {
             InitializeComponent();
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.idClient = MainWindow.IdCurrentClient;
             this.connexion = connexion;
         }
