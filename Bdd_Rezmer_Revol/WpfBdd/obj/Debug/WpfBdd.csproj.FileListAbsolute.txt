@@ -139,3 +139,5 @@ C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenDe
 C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenDemo3.baml
 C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenDemo4.baml
 C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenDemo5.baml
+C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenNbDeCommande.g.cs
+C:\Users\Philbert\Documents\GitHub\BddA3\Bdd_Rezmer_Revol\WpfBdd\obj\Debug\FenNbDeCommande.baml
