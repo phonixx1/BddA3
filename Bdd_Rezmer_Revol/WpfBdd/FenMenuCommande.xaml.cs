@@ -100,15 +100,17 @@ namespace WpfBdd
         private void btnCommande_Click(object sender, RoutedEventArgs e)
         {
             MySqlCommand commande = this.connexion.CreateCommand();
-             bool commandeBonne = true;
+            bool commandeBonne = true;
             string msg;
             FenNbDeCommande fenQuantite;
             string nombre;
             MySqlDataReader reader;
             List<String> aRetirer = new List<String>();
             List<String> quantiteList = new List<String>();
-            
-            foreach(string eleme in listChoix)
+            int compteurRecette;
+            List<String> idProduitAdecrementer= new List<String>();
+
+            foreach (string eleme in listChoix)
             {
                 fenQuantite = new FenNbDeCommande(eleme);
                 fenQuantite.ShowDialog();
@@ -151,9 +153,42 @@ namespace WpfBdd
             {
                 foreach( string elem in listChoix)
                 {
-                   // commande.CommandText= "UPDATE produit set stockActuel = 8 where idProduit = "P012";" 
+                    commande.CommandText= "UPDATE recette set compteur = compteur+"+quantiteList[listChoix.IndexOf(elem)] +"where idRecette ="+ elem.Substring(0, 4) + ";";
+                    commande.ExecuteNonQuery();
+                    commande.CommandText = "select compteur from recette where idRecette=" + elem.Substring(0, 4) + ";";
+                    reader = commande.ExecuteReader();
+                    reader.Read();
+                    compteurRecette = reader.GetInt32(0);
+                    reader.Close();
+                    if (compteurRecette > 10 && compteurRecette - Convert.ToInt32(quantiteList[listChoix.IndexOf(elem)]) < 10)
+                    {
+                        commande.CommandText= "UPDATE recette SET prixDeVente=prixDeVente+2  where idRecette=" + elem.Substring(0, 4) + ";";
+                        commande.ExecuteNonQuery();
+
+                    }
+                    else if (compteurRecette > 50 && compteurRecette - Convert.ToInt32(quantiteList[listChoix.IndexOf(elem)]) < 50)
+                    {
+                        commande.CommandText = "UPDATE recette SET prixDeVente=prixDeVente+5  where idRecette=" + elem.Substring(0, 4) + ";";
+                        commande.ExecuteNonQuery();
+
+                    }
+                    
+                    if (compteurRecette<50)
+                    {
+                        commande.CommandText = "UPDATE client SET soldeCook=soldeCook+2 where idClient=" + MainWindow.IdCurrentClient + ";";
+                    }
+                    else
+                    {
+                        commande.CommandText = "UPDATE client SET soldeCook=soldeCook+4 where idClient=" + MainWindow.IdCurrentClient + ";";
+                    }
+                    commande.ExecuteNonQuery();
+                    commande.CommandText = "UPDATE produit natural join estconstitue natural join recette SET stockActuel=stockActuel-"+ quantiteList[listChoix.IndexOf(elem)] + "*estconstitue.quantiteUtilisee where recette.idRecette="+ elem.Substring(0, 4) + " and  recette.idRecette=estconstitue.idRecette and estconstitue.idProduit=produit.idProduit;";
+                    commande.ExecuteNonQuery();
+
+
+
                 }
-                MessageBox.Show("Commande Validée tout les produits sont disponibles");
+                MessageBox.Show("Commande Validée tout les produits sont disponibles\nRedirection vers notre site de payement sécurisé...");
 
             }
             else

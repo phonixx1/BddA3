@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,6 +51,8 @@ namespace WpfBdd
                 MessageBox.Show("Echec de la connexion");
                 this.Close();
             }
+            
+
         }
 
         void Fermeture(object sender, CancelEventArgs e)
@@ -83,6 +86,7 @@ namespace WpfBdd
 
         private void btnAdmin_Click(object sender, RoutedEventArgs e)
         {
+            
             FenGestionCooking gestion = new FenGestionCooking(this.connexion);
             this.Hide();
             gestion.Owner = this;

@@ -25,6 +25,7 @@ namespace WpfBdd
     /// </summary>
     public partial class FenGestionCooking : Window
     {
+        
         MySqlConnection connexion;
         DataTable tableTop5;
         DataTable tableCommande;
@@ -160,7 +161,9 @@ namespace WpfBdd
 
         private void btnXML_Click(object sender, RoutedEventArgs e)
         {
+
             string path = "D:/ESILV/2019 2020/Semestre 6/Base de données/TD/DM";
+            //string path = Directory.GetCurrentDirectory();
             XmlWriter writer = XmlWriter.Create(path+"/test.xml");
             writer.Close();
             MySqlCommand commande = this.connexion.CreateCommand();
