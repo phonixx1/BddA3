@@ -55,21 +55,11 @@ namespace WpfBdd
             dataAdp.Fill(tableRecette);
             dataGridProduit.ItemsSource = tableRecette.DefaultView;
         }
-        /*
-        private void btnSuivant_Click(object sender, RoutedEventArgs e)
-        {
-            FenDemo5 demo5 = new FenDemo5(this.connexion);
-            this.Hide();
-            demo5.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            demo5.Owner = this;
-            demo5.ShowDialog();
-            this.ShowDialog();
-        }
-        */
+        
         private void btnFin_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("La démo est terminée. Merci", "Démo terminée", MessageBoxButton.OK);
-            this.Hide();
+            this.Close();
         }
 
         private void dataGridProduit_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)

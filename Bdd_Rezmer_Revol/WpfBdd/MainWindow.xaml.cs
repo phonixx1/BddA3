@@ -97,10 +97,10 @@ namespace WpfBdd
         {
             FenDemo demo = new FenDemo(this.connexion);
             demo.Owner = this;
-            demo.ShowDialog();
+            demo.Show();
             if (demo.IsActive == false)
             {
-                this.ShowDialog();
+                this.Show();
             }
         }
 

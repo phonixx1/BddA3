@@ -46,11 +46,10 @@ namespace WpfBdd
         private void btnSuivant_Click(object sender, RoutedEventArgs e)
         {
             FenDemo3 demo3 = new FenDemo3(this.connexion);
-            this.Hide();
+            this.Close();
             demo3.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            demo3.Owner = this;
-            demo3.ShowDialog();
-            this.ShowDialog();
+            demo3.Show();
+            this.Close();
         }
 
         private void dataGridCdR_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
