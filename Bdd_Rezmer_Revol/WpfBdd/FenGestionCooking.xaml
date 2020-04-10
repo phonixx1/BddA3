@@ -5,19 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfBdd"
         mc:Ignorable="d"
-        Title="Gestionnaire de Cooking" Height="851.596" Width="800">
+        Title="Gestionnaire de Cooking" Height="721.996" Width="945.6">
     <Grid>
         <Label Content="Tableau de bord" FontFamily="comic sans ms" FontSize="20" Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Top" Width="167" Height="45" Margin="320,10,306.6,0"   />
-        <Label Content="CdR de la semaine :" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="175" Height="45" Margin="63,93,555.6,0"   />
-        <TextBox Name="txtCdrWeek" HorizontalAlignment="Left" MaxLength="4" Height="23" Margin="304,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
-        <Label Content="CdR d'or :" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="98" Height="45" Margin="140,138,555.6,0"   />
-        <TextBox Name="txtGoldenCdr" HorizontalAlignment="Left" MaxLength="4" Height="23" Margin="304,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
-        <Label Content="Top 5 des recettes" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="171" Height="45" Margin="320,221,302.6,0"   />
-        <DataGrid Name="dataGridTop5" AutoGenerateColumns="True" HorizontalAlignment="Left" Height="312" Margin="10,266,0,0" VerticalAlignment="Top" Width="774"/>
-        <Button Name="btnRetour" Click="btnRetour_Click" Content="Retour" HorizontalAlignment="Center" Margin="343,782,330.6,0" VerticalAlignment="Top" Height="30" Width="120" RenderTransformOrigin="0.361,0.58"/>
-        <ComboBox Name="comboBoxRecette" HorizontalAlignment="Left" Margin="163,617,0,0" VerticalAlignment="Top" Width="250" DropDownClosed="comboBoxRecette_DropDownClosed" Height="30"/>
-        <Button Content="Supprimer une recette" HorizontalAlignment="Center" Margin="486,617,176.6,0" VerticalAlignment="Top" Height="30" Width="131"/>
-        <ComboBox Name="comboBoxCuisinier" HorizontalAlignment="Left" Margin="163,692,0,0" VerticalAlignment="Top" Width="250" DropDownClosed="comboBoxCuisinier_DropDownClosed" Height="30"/>
-        <Button Content="Supprimer un cuisinier" HorizontalAlignment="Center" Margin="486,692,177.6,0" VerticalAlignment="Top" Height="30" Width="130"/>
+        <Label Content="CdR de la semaine :" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="175" Height="45" Margin="38,93,726.2,0"   />
+        <TextBox Name="txtCdrWeek" HorizontalAlignment="Left" MaxLength="4" Height="23" Margin="237,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+        <Label Content="CdR d'or :" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="98" Height="45" Margin="115,136,726.2,0"   />
+        <TextBox Name="txtGoldenCdr" HorizontalAlignment="Left" MaxLength="4" Height="23" Margin="237,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+        <Label Content="Top 5 des recettes" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="171" Height="45" Margin="210,221,558.2,0"   />
+        <DataGrid Name="dataGridTop5" AutoGenerateColumns="True" HorizontalAlignment="Left" Height="312" Margin="10,266,0,0" VerticalAlignment="Top" Width="550"/>
+        <Button Name="btnRetour" Click="btnRetour_Click" Content="Retour" HorizontalAlignment="Center" Margin="419,641,400.2,0" VerticalAlignment="Top" Height="30" Width="120" RenderTransformOrigin="0.361,0.58"/>
+        <ComboBox Name="comboBoxRecette" HorizontalAlignment="Left" Margin="619,266,0,0" VerticalAlignment="Top" Width="250" DropDownClosed="comboBoxRecette_DropDownClosed" Height="30"/>
+        <Button Name="btnSupprimerRecette" Click="btnSupprimerRecette_Click" Content="Supprimer une recette" HorizontalAlignment="Center" Margin="679,332,129.2,0" VerticalAlignment="Top" Height="30" Width="131"/>
+        <ComboBox Name="comboBoxCuisinier" HorizontalAlignment="Left" Margin="619,465,0,0" VerticalAlignment="Top" Width="250" DropDownClosed="comboBoxCuisinier_DropDownClosed" Height="30"/>
+        <Button Name="btnSupprimerCuisinier" Click="btnSupprimerCuisinier_Click" Content="Supprimer un cuisinier" HorizontalAlignment="Center" Margin="679,526,130.2,0" VerticalAlignment="Top" Height="30" Width="130"/>
+        <Button Content="Générer le fichier de commande XML" HorizontalAlignment="Center" Margin="619,122,70.2,0" VerticalAlignment="Top" Height="30" Width="250"/>
     </Grid>
 </Window>
