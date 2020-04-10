@@ -19,6 +19,6 @@
         <Button Name="btnSupprimerRecette" Click="btnSupprimerRecette_Click" Content="Supprimer une recette" HorizontalAlignment="Center" Margin="679,332,129.2,0" VerticalAlignment="Top" Height="30" Width="131"/>
         <ComboBox Name="comboBoxCuisinier" HorizontalAlignment="Left" Margin="619,465,0,0" VerticalAlignment="Top" Width="250" DropDownClosed="comboBoxCuisinier_DropDownClosed" Height="30"/>
         <Button Name="btnSupprimerCuisinier" Click="btnSupprimerCuisinier_Click" Content="Supprimer un cuisinier" HorizontalAlignment="Center" Margin="679,526,130.2,0" VerticalAlignment="Top" Height="30" Width="130"/>
-        <Button Content="Générer le fichier de commande XML" HorizontalAlignment="Center" Margin="619,122,70.2,0" VerticalAlignment="Top" Height="30" Width="250"/>
+        <Button Name="btnXML" Click="btnXML_Click" Content="Générer le fichier de commande XML" HorizontalAlignment="Center" Margin="619,122,70.2,0" VerticalAlignment="Top" Height="30" Width="250"/>
     </Grid>
 </Window>
