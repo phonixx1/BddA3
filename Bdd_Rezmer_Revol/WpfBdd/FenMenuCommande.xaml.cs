@@ -50,32 +50,37 @@ namespace WpfBdd
         private void comboBoxRecette_DropDownClosed(object sender, EventArgs e)
         {
             MySqlCommand commande = this.connexion.CreateCommand();
-            commande.CommandText = "SELECT * FROM recette WHERE idRecette='" + comboBoxRecette.Text.ToString().Substring(0, 4) + "';";
+            if (comboBoxRecette.Text != "")
+            {
+                commande.CommandText = "SELECT * FROM recette WHERE idRecette='" + comboBoxRecette.Text.ToString().Substring(0, 4) + "';";
 
 
-            MySqlDataReader reader = commande.ExecuteReader();
-            reader.Read();
+                MySqlDataReader reader = commande.ExecuteReader();
+                reader.Read();
 
-            string sIdRecette = reader.GetString(0);
-            string sNomRecette = reader.GetString(1);
-            string sTypeRecette = reader.GetString(2);
-            string sPrixDeVente = reader.GetInt32(3).ToString();
-            string sDescriptif = reader.GetString(4);
+                string sIdRecette = reader.GetString(0);
+                string sNomRecette = reader.GetString(1);
+                string sTypeRecette = reader.GetString(2);
+                string sPrixDeVente = reader.GetInt32(3).ToString();
+                string sDescriptif = reader.GetString(4);
 
-            txtBoxDescri.Text = sDescriptif;
-            txtBoxNom.Text = sNomRecette;
-            txtBoxNum.Text = sIdRecette;
-            txtBoxType.Text = sTypeRecette;
-            txtBoxPrix.Text = sPrixDeVente;
+                txtBoxDescri.Text = sDescriptif;
+                txtBoxNom.Text = sNomRecette;
+                txtBoxNum.Text = sIdRecette;
+                txtBoxType.Text = sTypeRecette;
+                txtBoxPrix.Text = sPrixDeVente;
 
 
-            reader.Close();
+                reader.Close();
+            }
         }
 
         private void btnAjout_Click(object sender, RoutedEventArgs e)
         {
+
             listChoix.Add(txtBoxNum.Text + txtBoxNom.Text);
             listBoxCommande.Items.Refresh();
+            comboBoxRecette.Items.Remove(comboBoxRecette.SelectedItem);
 
         }
 
@@ -85,7 +90,8 @@ namespace WpfBdd
             if (listChoix.Contains(choix2))
               {
                     listChoix.Remove(choix2);
-              }
+                     comboBoxRecette.Items.Add(choix2);
+            }
             
             listBoxCommande.Items.Refresh();
         }
@@ -94,23 +100,32 @@ namespace WpfBdd
         {
             MySqlCommand commande = this.connexion.CreateCommand();
             commande.CommandText = "SELECT * FROM recette WHERE idRecette='" + comboBoxRecette.Text.ToString().Substring(0, 4) + "';";
-            MySqlDataReader reader;
+            bool commandeBonne = true;
+            //MySqlDataReader reader;
             
             foreach(string eleme in listChoix)
             {
-                commande.CommandText = "SELECT * FROM estconstitue WHERE idRecette='" + eleme.Substring(0, 4) + "';";
-                reader = commande.ExecuteReader(); ;
-                while(reader.Read())
+                commande.CommandText = "select idProduit from estconstitue natural join produit where idRecette='" + eleme.Substring(0, 4) + "' and estconstitue.quantiteUtilisee>produit.stockActuel;";
+                if(commande.ExecuteNonQuery()>0)
                 {
-
+                    commandeBonne = false;
+                    listChoix.Remove(eleme);
                 }
-                reader.Close();
+
+            }
+            if(commandeBonne)
+            {
+
+            }
+            else
+            {
+
             }
 
 
 
            
-
+            
 
         }
     }
