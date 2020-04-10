@@ -100,12 +100,13 @@ namespace WpfBdd
         private void btnCommande_Click(object sender, RoutedEventArgs e)
         {
             MySqlCommand commande = this.connexion.CreateCommand();
-           // commande.CommandText = "SELECT * FROM recette WHERE idRecette='" + comboBoxRecette.Text.ToString().Substring(0, 4) + "';";
-            bool commandeBonne = true;
+             bool commandeBonne = true;
             string msg;
             FenNbDeCommande fenQuantite;
             string nombre;
-            //MySqlDataReader reader;
+            MySqlDataReader reader;
+            List<String> aRetirer = new List<String>();
+            List<String> quantiteList = new List<String>();
             
             foreach(string eleme in listChoix)
             {
@@ -121,18 +122,39 @@ namespace WpfBdd
                 }
 
                 commande.CommandText = "select idProduit from estconstitue natural join produit where idRecette='" + eleme.Substring(0, 4) + "' and "+ nombre + "*estconstitue.quantiteUtilisee>produit.stockActuel;";
-                if(commande.ExecuteNonQuery()>0)
+                reader = commande.ExecuteReader();
+                reader.Read();
+                if(reader.HasRows)
                 {
                     commandeBonne = false;
-                    listChoix.Remove(eleme);
+                    aRetirer.Add(eleme);
+                    
                     msg = "Pas assez de produit pour " + nombre + " " + eleme;
                     MessageBox.Show(msg);
                 }
+                reader.Close();
+                if(listChoix.Count==0)
+                {
+                    break;
+                }
+                quantiteList.Add(nombre);
+                
 
+            }
+            foreach(string elem in aRetirer)
+            {
+                listChoix.Remove(elem);
+                comboBoxRecette.Items.Add(elem);
+                listBoxCommande.Items.Refresh();
             }
             if(commandeBonne)
             {
+                foreach( string elem in listChoix)
+                {
+                   // commande.CommandText= "UPDATE produit set stockActuel = 8 where idProduit = "P012";" 
+                }
                 MessageBox.Show("Commande Validée tout les produits sont disponibles");
+
             }
             else
             {
