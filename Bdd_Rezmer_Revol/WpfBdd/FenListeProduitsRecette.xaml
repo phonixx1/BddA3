@@ -10,7 +10,7 @@
         <DataGrid Name="dataGridProduit" AutoGenerateColumns="True" AutoGeneratingColumn="dataGridProduit_AutoGeneratingColumn"  HorizontalAlignment="Left" Height="427" Margin="10,67,0,0" VerticalAlignment="Top" Width="471"/>
         <DataGrid Name="dataGridProduitChoisi" AutoGenerateColumns="True"  AutoGeneratingColumn="dataGridProduit_AutoGeneratingColumn"  HorizontalAlignment="Left" Height="427" Margin="688,67,0,0" VerticalAlignment="Top" Width="458"/>
         <Button Name="btnAjout" Content="----> Ajouter le produit ---->" Click="btnAjout_Click" HorizontalAlignment="Left" Margin="504,272,0,0" VerticalAlignment="Top" Width="164" Height="38"/>
-
+        <Button Name="btnValider" Content="Valider" HorizontalAlignment="Left" Margin="504,503,0,0" VerticalAlignment="Top" Width="164" Height="38"/>
 
     </Grid>
 </Window>

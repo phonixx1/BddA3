@@ -25,17 +25,38 @@ namespace WpfBdd
         bool creee = false;
         int prixDeVente;
         bool prixCorrect=false;
+        string idNew;
         MySqlConnection connexion;
         public FenAjoutRecetteCdr(MySqlConnection connexion)
         {
             InitializeComponent();
             this.idClient = MainWindow.IdCurrentClient;
             this.connexion = connexion;
+            idNew = "";
+            MySqlDataReader reader = null;
+            MySqlCommand command = connexion.CreateCommand();
+            command.CommandText = "SELECT COUNT(*) FROM recette";
+            reader = command.ExecuteReader();
+            reader.Read();
+            int nb = Convert.ToInt32(reader.GetValue(0));
+            if (nb < 10)
+            {
+                idNew = "R00" + (nb + 1).ToString();
+            }
+            else if (nb > 10 && nb < 100)
+            {
+                idNew = "R0" + (nb + 1).ToString();
+            }
+            else
+            {
+                idNew = "R" + (nb + 1).ToString();
+            }
+            reader.Close();
         }
 
         private void btnProduits_Click(object sender, RoutedEventArgs e)
         {
-            FenListeProduitsRecette ajoutProduit = new FenListeProduitsRecette(this.connexion);
+            FenListeProduitsRecette ajoutProduit = new FenListeProduitsRecette(this.connexion,idNew);
             ajoutProduit.Owner = this;
             this.Hide();
             ajoutProduit.ShowDialog();
@@ -58,26 +79,8 @@ namespace WpfBdd
                 nomRecette = txtBoxNomRecette.Text;
                 type = comboType.Text;
                 descriptif = txtBoxDescriptif.Text;
-                MySqlDataReader reader = null;
                 MySqlCommand command = connexion.CreateCommand();
-                command.CommandText = "SELECT COUNT(*) FROM recette";
-                reader = command.ExecuteReader();
-                reader.Read();
-                int nb = Convert.ToInt32(reader.GetValue(0));
                 prixDeVente = Convert.ToInt32(txtBoxPrix.Text);
-                string idNew = "";
-                if (nb < 10)
-                {
-                    idNew = "R00" + (nb + 1).ToString();
-                }
-                else if (nb > 10 && nb < 100)
-                {
-                    idNew = "R0" + (nb + 1).ToString();
-                }
-                else
-                {
-                    idNew = "R" + (nb + 1).ToString();
-                }
                 command.CommandText = "INSERT INTO `cooking`.`recette` (`idRecette`, `nomRecette`, `type`, `prixDeVente`, `descriptif`,`compteur`,`idCompte`,`idCuisinier`) VALUES (@id, @nomRecette, @type, @prix, @descriptif,0,@idClient,'C002')";
                 command.Parameters.AddWithValue("@nomRecette", nomRecette);
                 command.Parameters.AddWithValue("@descriptif", descriptif);
@@ -85,15 +88,13 @@ namespace WpfBdd
                 command.Parameters.AddWithValue("@idClient", idClient);
                 command.Parameters.AddWithValue("@prix", prixDeVente);
                 command.Parameters.AddWithValue("@id", idNew);
-                reader.Close();
                 command.ExecuteNonQuery();
-                command.CommandText = "UPDATE client SET soldeCook = soldeCook + 4 WHERE idCompte=\"" + idClient + "\";";
-                command.ExecuteNonQuery();
+                /*command.CommandText = "UPDATE client SET soldeCook = soldeCook + 4 WHERE idCompte=\"" + idClient + "\";";
+                command.ExecuteNonQuery();*/
                 MessageBox.Show("Creation de la recette réussie !");
                 creee = true;
                 this.Close();
-            }
-            
+            } 
         }
 
         void Fermeture(object sender, CancelEventArgs e)

@@ -24,12 +24,13 @@ namespace WpfBdd
         MySqlConnection connexion;
         DataTable tableProduit;
         DataTable tableChoix;
+        string idNew;
         
-        public FenListeProduitsRecette(MySqlConnection connexion)
+        public FenListeProduitsRecette(MySqlConnection connexion, string idNew)
         {
             InitializeComponent();
             this.connexion = connexion;
-
+            this.idNew = idNew;
             MySqlCommand commande = this.connexion.CreateCommand();
             commande.CommandText = "SELECT idProduit,nomProduit,categorie,uniteDeQuantite FROM produit;";
             commande.ExecuteNonQuery();
@@ -48,7 +49,6 @@ namespace WpfBdd
             dataGridProduit.ItemsSource = tableProduit.DefaultView;
             dataGridProduitChoisi.ItemsSource = tableChoix.DefaultView;
             // dataAdp.Update(dt);
-
         }
         private void btnAjout_Click(object sender, RoutedEventArgs e)
         {
@@ -60,17 +60,14 @@ namespace WpfBdd
                               .ToList();
             foreach (DataRow row in tableProduit.Rows)
             {
-                //row["idProduit"]
+                string idProduit1 = row["idProduit"].ToString();
                 if (SelectedIndexes.Contains(tableProduit.Rows.IndexOf(row)))
                 {
                     tableChoix.Rows.Add(row.ItemArray);
                 }
                 dataGridProduitChoisi.Items.Refresh();
             }
-
-
             dataGridProduitChoisi.Items.Refresh();
-
         }
 
         private void dataGridProduit_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -91,6 +88,6 @@ namespace WpfBdd
             {
                 e.Column.IsReadOnly = true;
             }
-        }   
+        }
     }
 }

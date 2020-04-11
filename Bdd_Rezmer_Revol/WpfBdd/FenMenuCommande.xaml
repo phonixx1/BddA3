@@ -13,11 +13,11 @@
         <Label Content="Type de plat:" HorizontalAlignment="Left" Margin="383,130,0,0" VerticalAlignment="Top" Width="102" />
         <Label Content="Prix:" HorizontalAlignment="Left" Margin="383,170,0,0" VerticalAlignment="Top" Width="102" />
         <Label Content="Descriptif:" HorizontalAlignment="Left" Margin="383,210,0,0" VerticalAlignment="Top" Width="102" />
-        <TextBox Name="txtBoxNum" HorizontalAlignment="Left" MaxLength="4" Height="23" Margin="552,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
-        <TextBox Name="txtBoxNom" HorizontalAlignment="Left" MaxLength="50" Height="40" Margin="552,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
-        <TextBox Name="txtBoxType" HorizontalAlignment="Left" MaxLength="20" Height="23" Margin="552,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
-        <TextBox Name="txtBoxPrix" HorizontalAlignment="Left" Height="23" Margin="552,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
-        <TextBox Name="txtBoxDescri" HorizontalAlignment="Left" MaxLength="256" Height="156" Margin="552,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+        <TextBox Name="txtBoxNum" IsReadOnly="True" HorizontalAlignment="Left" MaxLength="4" Height="23" Margin="552,30,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+        <TextBox Name="txtBoxNom" IsReadOnly="True" HorizontalAlignment="Left" MaxLength="50" Height="40" Margin="552,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+        <TextBox Name="txtBoxType" IsReadOnly="True" HorizontalAlignment="Left" MaxLength="20" Height="23" Margin="552,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+        <TextBox Name="txtBoxPrix" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="552,170,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+        <TextBox Name="txtBoxDescri" IsReadOnly="True" HorizontalAlignment="Left" MaxLength="256" Height="156" Margin="552,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
         <Button Name="btnAjout" Click="btnAjout_Click" Content="Ajouter ce plat" HorizontalAlignment="Left" Margin="120,90,0,0" VerticalAlignment="Top" Width="112" Height="20"/>
         <Button Name="btnCommande" Click="btnCommande_Click"  Content="Passer la commande" HorizontalAlignment="Left" Margin="120,345,0,0" VerticalAlignment="Top" Width="112" Height="32" />
         <ListBox Name="listBoxCommande" HorizontalAlignment="Left" Height="100" Margin="91,170,0,0" VerticalAlignment="Top" Width="182"/>

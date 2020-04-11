@@ -78,20 +78,36 @@ namespace WpfBdd
 
         private void btnAjout_Click(object sender, RoutedEventArgs e)
         {
-
-            listChoix.Add(txtBoxNum.Text + txtBoxNom.Text);
-            listBoxCommande.Items.Refresh();
-            comboBoxRecette.Items.Remove(comboBoxRecette.SelectedItem);
-
+            if(comboBoxRecette.SelectedItem == null)
+            {
+                MessageBox.Show("Veuillez d'abord choisir une recette dans le menu déroulant", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+            else
+            {
+                listChoix.Add(txtBoxNum.Text + txtBoxNom.Text);
+                listBoxCommande.Items.Refresh();
+                comboBoxRecette.Items.Remove(comboBoxRecette.SelectedItem);
+                comboBoxRecette.SelectedItem = null;
+                txtBoxDescri.Text = "";
+                txtBoxNom.Text = "";
+                txtBoxNum.Text = "";
+                txtBoxType.Text = "";
+                txtBoxPrix.Text = "";
+            }
         }
 
         private void btnSupprimer_Click(object sender, RoutedEventArgs e)
         {
             string choix2=listBoxCommande.SelectedItem as String;
             if (listChoix.Contains(choix2))
-              {
-                    listChoix.Remove(choix2);
-                     comboBoxRecette.Items.Add(choix2);
+            {
+                listChoix.Remove(choix2);
+                comboBoxRecette.Items.Add(choix2);
+                txtBoxDescri.Text = "";
+                txtBoxNom.Text = "";
+                txtBoxNum.Text = "";
+                txtBoxType.Text = "";
+                txtBoxPrix.Text = "";
             }
             
             listBoxCommande.Items.Refresh();
