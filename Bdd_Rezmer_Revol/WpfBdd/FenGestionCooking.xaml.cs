@@ -15,7 +15,7 @@ using System.Windows.Shapes;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Xml;
-using System.Xml.Serialization;
+using System.ComponentModel;
 
 
 namespace WpfBdd

@@ -110,7 +110,7 @@ namespace WpfBdd
                 commande.Parameters.AddWithValue("@quantite", quantite1);
                 commande.ExecuteNonQuery();
             }
-            MessageBox.Show("Les produits ont bien été ajouté à votre recette", "Information", MessageBoxButton.OK);
+            MessageBox.Show("Les produits ont bien été ajoutés à votre recette", "Information", MessageBoxButton.OK);
             this.DialogResult = true;
         }
     }

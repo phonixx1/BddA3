@@ -35,7 +35,7 @@ namespace WpfBdd
             idNew = "";
             MySqlDataReader reader = null;
             MySqlCommand command = connexion.CreateCommand();
-            command.CommandText = "SELECT COUNT(*) FROM recette";
+            command.CommandText = "SELECT COUNT(*) FROM recette;";
             reader = command.ExecuteReader();
             reader.Read();
             int nb = Convert.ToInt32(reader.GetValue(0));
@@ -74,28 +74,42 @@ namespace WpfBdd
         {
             if (prixCorrect == false)
             {
-                MessageBox.Show("Veuillez d'abord saisir un prix correct et le faire valider à l'aide du boutton !", "Attention", MessageBoxButton.OK);
+                MessageBox.Show("Veuillez d'abord saisir un prix correct et le faire valider à l'aide du bouton !", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            
             else
             {
-                string nomRecette, type, descriptif;
-                int prixDeVente;
-                nomRecette = txtBoxNomRecette.Text;
-                type = comboType.Text;
-                descriptif = txtBoxDescriptif.Text;
+                MySqlDataReader reader = null;
                 MySqlCommand command = connexion.CreateCommand();
-                prixDeVente = Convert.ToInt32(txtBoxPrix.Text);
-                command.CommandText = "UPDATE recette SET nomRecette=@nomRecette, descriptif=@descriptif, type=@type, prixDeVente=@prix WHERE idRecette=\"" + idNew + "\";";
-                command.Parameters.AddWithValue("@nomRecette", nomRecette);
-                command.Parameters.AddWithValue("@descriptif", descriptif);
-                command.Parameters.AddWithValue("@type", type);
-                command.Parameters.AddWithValue("@prix", prixDeVente);
-                command.ExecuteNonQuery();
-                /*command.CommandText = "UPDATE client SET soldeCook = soldeCook + 4 WHERE idCompte=\"" + idClient + "\";";
-                command.ExecuteNonQuery();*/
-                MessageBox.Show("Creation de la recette réussie !");
-                creee = true;
-                this.Close();
+                command.CommandText = "SELECT COUNT(*) FROM estConstitue WHERE idRecette=\"" + idNew + "\";";
+                reader = command.ExecuteReader();
+                reader.Read();
+                int nb = Convert.ToInt32(reader.GetValue(0));
+                reader.Close();
+                if (nb == 0)
+                {
+                    MessageBox.Show("Votre recette ne contient pas de produits", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    string nomRecette, type, descriptif;
+                    int prixDeVente;
+                    nomRecette = txtBoxNomRecette.Text;
+                    type = comboType.Text;
+                    descriptif = txtBoxDescriptif.Text;
+                    prixDeVente = Convert.ToInt32(txtBoxPrix.Text);
+                    command.CommandText = "UPDATE recette SET nomRecette=@nomRecette, descriptif=@descriptif, type=@type, prixDeVente=@prix WHERE idRecette=\"" + idNew + "\";";
+                    command.Parameters.AddWithValue("@nomRecette", nomRecette);
+                    command.Parameters.AddWithValue("@descriptif", descriptif);
+                    command.Parameters.AddWithValue("@type", type);
+                    command.Parameters.AddWithValue("@prix", prixDeVente);
+                    command.ExecuteNonQuery();
+                    /*command.CommandText = "UPDATE client SET soldeCook = soldeCook + 4 WHERE idCompte=\"" + idClient + "\";";
+                    command.ExecuteNonQuery();*/
+                    MessageBox.Show("Creation de la recette réussie !");
+                    creee = true;
+                    this.Close();
+                }
             } 
         }
 
@@ -129,7 +143,7 @@ namespace WpfBdd
         {
             if (txtBoxPrix.Text=="")
             {
-                MessageBox.Show("Veuillez d'abord saisir un prix", "Attention", MessageBoxButton.OK);
+                MessageBox.Show("Veuillez d'abord saisir un prix", "Attention", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
@@ -140,7 +154,7 @@ namespace WpfBdd
                 }
                 else
                 {
-                    MessageBox.Show("Le prix de votre recette est valide", "Attention", MessageBoxButton.OK);
+                    MessageBox.Show("Le prix de votre recette est valide", "Information", MessageBoxButton.OK);
                     prixCorrect = true;
                 }
             }  
