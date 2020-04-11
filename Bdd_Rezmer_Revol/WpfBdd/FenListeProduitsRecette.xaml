@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfBdd"
         mc:Ignorable="d"
-        Title="FenListeProduitsRecette" Height="600" Width="1162.069">
+        Title="Produits composant la recette à créer" Height="600" Width="1162.069">
     <Grid>
+        <Label Content="Produits disponibles" FontFamily="comic sans ms" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Width="209" Height="45" Margin="146,22,801,0"  />
+        <Label Content="Produits de la future recette" FontFamily="comic sans ms" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Width="288" Height="45" Margin="784,22,84,0"  />
         <DataGrid Name="dataGridProduit" AutoGenerateColumns="True" AutoGeneratingColumn="dataGridProduit_AutoGeneratingColumn"  HorizontalAlignment="Left" Height="427" Margin="10,67,0,0" VerticalAlignment="Top" Width="471"/>
         <DataGrid Name="dataGridProduitChoisi" AutoGenerateColumns="True"  AutoGeneratingColumn="dataGridProduit_AutoGeneratingColumn"  HorizontalAlignment="Left" Height="427" Margin="688,67,0,0" VerticalAlignment="Top" Width="458"/>
         <Button Name="btnAjout" Content="----> Ajouter le produit ---->" Click="btnAjout_Click" HorizontalAlignment="Left" Margin="504,272,0,0" VerticalAlignment="Top" Width="164" Height="38"/>
-        <Button Name="btnValider" Content="Valider" HorizontalAlignment="Left" Margin="504,503,0,0" VerticalAlignment="Top" Width="164" Height="38"/>
+        <Button Name="btnValider" Content="Valider" Click="btnValider_Click" HorizontalAlignment="Left" Margin="504,503,0,0" VerticalAlignment="Top" Width="164" Height="38"/>
 
     </Grid>
 </Window>

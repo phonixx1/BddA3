@@ -52,6 +52,10 @@ namespace WpfBdd
                 idNew = "R" + (nb + 1).ToString();
             }
             reader.Close();
+            command.CommandText = "INSERT INTO `cooking`.`recette` (`idRecette`, `nomRecette`, `type`, `prixDeVente`, `descriptif`,`compteur`,`idCompte`,`idCuisinier`) VALUES (@idR, '', '', 0, '',0,@idC,'C002');";
+            command.Parameters.AddWithValue("@idR", idNew);
+            command.Parameters.AddWithValue("@idC", idClient);
+            command.ExecuteNonQuery();  
         }
 
         private void btnProduits_Click(object sender, RoutedEventArgs e)
@@ -81,13 +85,11 @@ namespace WpfBdd
                 descriptif = txtBoxDescriptif.Text;
                 MySqlCommand command = connexion.CreateCommand();
                 prixDeVente = Convert.ToInt32(txtBoxPrix.Text);
-                command.CommandText = "INSERT INTO `cooking`.`recette` (`idRecette`, `nomRecette`, `type`, `prixDeVente`, `descriptif`,`compteur`,`idCompte`,`idCuisinier`) VALUES (@id, @nomRecette, @type, @prix, @descriptif,0,@idClient,'C002')";
+                command.CommandText = "UPDATE recette SET nomRecette=@nomRecette, descriptif=@descriptif, type=@type, prixDeVente=@prix WHERE idRecette=\"" + idNew + "\";";
                 command.Parameters.AddWithValue("@nomRecette", nomRecette);
                 command.Parameters.AddWithValue("@descriptif", descriptif);
                 command.Parameters.AddWithValue("@type", type);
-                command.Parameters.AddWithValue("@idClient", idClient);
                 command.Parameters.AddWithValue("@prix", prixDeVente);
-                command.Parameters.AddWithValue("@id", idNew);
                 command.ExecuteNonQuery();
                 /*command.CommandText = "UPDATE client SET soldeCook = soldeCook + 4 WHERE idCompte=\"" + idClient + "\";";
                 command.ExecuteNonQuery();*/
@@ -109,6 +111,9 @@ namespace WpfBdd
                 }
                 else
                 {
+                    MySqlCommand command = connexion.CreateCommand();
+                    command.CommandText = "DELETE FROM recette WHERE idRecette=\"" + idNew + "\";";
+                    command.ExecuteNonQuery();
                     string msg2 = "Vous avez quitté sans enregistrer";
                     MessageBox.Show(msg2, "Cooking App", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 }

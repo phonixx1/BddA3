@@ -123,7 +123,7 @@ namespace WpfBdd
                 if (boxMdp.Password.ToString() == reader.GetString("mdp"))
                 {
                     idCurrentClient = txtBoxId.Text;
-                    MessageBox.Show("Connexion reussie");
+                    MessageBox.Show("Connexion réussie");
                     reader.Close();
                     txtBoxId.Clear();
                     boxMdp.Clear();
@@ -151,7 +151,7 @@ namespace WpfBdd
             {
                 reader.Close();
                 msg = "Veulliez créer un compte -> Nouveau Client";
-                MessageBox.Show(msg, "Pas de compte chez Cooking", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(msg, "Vous n'avez pas de compte chez Cooking", MessageBoxButton.OK, MessageBoxImage.Warning);
 
             }  
         }

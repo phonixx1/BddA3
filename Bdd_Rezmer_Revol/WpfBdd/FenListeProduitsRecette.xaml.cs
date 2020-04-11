@@ -32,7 +32,9 @@ namespace WpfBdd
             this.connexion = connexion;
             this.idNew = idNew;
             MySqlCommand commande = this.connexion.CreateCommand();
-            commande.CommandText = "SELECT idProduit,nomProduit,categorie,uniteDeQuantite FROM produit;";
+            commande.CommandText = "DELETE FROM estConstitue WHERE idRecette=\"" + idNew + "\";";
+            commande.ExecuteNonQuery();
+            commande.CommandText = "SELECT idProduit, nomProduit, categorie, uniteDeQuantite FROM produit;";
             commande.ExecuteNonQuery();
 
             tableProduit=new DataTable("Produit(s) disponible(s)");
@@ -61,9 +63,14 @@ namespace WpfBdd
             foreach (DataRow row in tableProduit.Rows)
             {
                 string idProduit1 = row["idProduit"].ToString();
+                string nomProduit1 = row["nomProduit"].ToString();
+                string categorie1 = row["categorie"].ToString();
+                string unitedequantite1 = row["uniteDeQuantite"].ToString();
                 if (SelectedIndexes.Contains(tableProduit.Rows.IndexOf(row)))
                 {
                     tableChoix.Rows.Add(row.ItemArray);
+                    //tableProduit.Rows.Remove(row);
+                    //dataGridProduit.Items.Refresh();
                 }
                 dataGridProduitChoisi.Items.Refresh();
             }
@@ -88,6 +95,23 @@ namespace WpfBdd
             {
                 e.Column.IsReadOnly = true;
             }
+        }
+
+        private void btnValider_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (DataRow row in tableChoix.Rows)
+            {
+                string idProduit1 = row["idProduit"].ToString();
+                int quantite1 = Convert.ToInt32(row["quantite"]);
+                MySqlCommand commande = this.connexion.CreateCommand();
+                commande.CommandText = "INSERT INTO `cooking`.`estConstitue` (`idRecette`, `idProduit`,`quantiteUtilisee`) VALUES (@idRecette, @idProduit, @quantite);";
+                commande.Parameters.AddWithValue("@idRecette", idNew);
+                commande.Parameters.AddWithValue("@idProduit", idProduit1);
+                commande.Parameters.AddWithValue("@quantite", quantite1);
+                commande.ExecuteNonQuery();
+            }
+            MessageBox.Show("Les produits ont bien été ajouté à votre recette", "Information", MessageBoxButton.OK);
+            this.DialogResult = true;
         }
     }
 }
