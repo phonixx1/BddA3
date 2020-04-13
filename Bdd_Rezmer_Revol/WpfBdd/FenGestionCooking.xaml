@@ -13,12 +13,12 @@
         <Label Content="CdR d'or :" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="98" Height="45" Margin="115,136,726.2,0"   />
         <TextBox Name="txtGoldenCdr" HorizontalAlignment="Left" MaxLength="4" Height="23" Margin="237,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
         <Label Content="Top 5 des recettes" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="171" Height="45" Margin="210,221,558.2,0"   />
-        <DataGrid Name="dataGridTop5" AutoGenerateColumns="True" HorizontalAlignment="Left" Height="312" Margin="10,266,0,0" VerticalAlignment="Top" Width="550"/>
+        <DataGrid Name="dataGridTop5" AutoGenerateColumns="True" HorizontalAlignment="Left" Height="312" Margin="10,266,0,0" VerticalAlignment="Top" Width="577"/>
         <Button Name="btnRetour" Click="btnRetour_Click" Content="Retour" HorizontalAlignment="Center" Margin="419,641,400.2,0" VerticalAlignment="Top" Height="30" Width="120" RenderTransformOrigin="0.361,0.58"/>
         <ComboBox Name="comboBoxRecette" HorizontalAlignment="Left" Margin="619,266,0,0" VerticalAlignment="Top" Width="250" DropDownClosed="comboBoxRecette_DropDownClosed" Height="30"/>
         <Button Name="btnSupprimerRecette" Click="btnSupprimerRecette_Click" Content="Supprimer une recette" HorizontalAlignment="Center" Margin="679,332,129.2,0" VerticalAlignment="Top" Height="30" Width="131"/>
-        <ComboBox Name="comboBoxCuisinier" HorizontalAlignment="Left" Margin="619,465,0,0" VerticalAlignment="Top" Width="250" DropDownClosed="comboBoxCuisinier_DropDownClosed" Height="30"/>
-        <Button Name="btnSupprimerCuisinier" Click="btnSupprimerCuisinier_Click" Content="Supprimer un cuisinier" HorizontalAlignment="Center" Margin="679,526,130.2,0" VerticalAlignment="Top" Height="30" Width="130"/>
+        <ComboBox Name="comboBoxCdR" HorizontalAlignment="Left" Margin="619,465,0,0" VerticalAlignment="Top" Width="250" DropDownClosed="comboBoxCdR_DropDownClosed" Height="30"/>
+        <Button Name="btnSupprimerCdR" Click="btnSupprimerCdR_Click" Content="Supprimer un CdR" HorizontalAlignment="Center" Margin="679,526,130.2,0" VerticalAlignment="Top" Height="30" Width="130"/>
         <Button Name="btnXML" Click="btnXML_Click" Content="Générer le fichier de commande XML" HorizontalAlignment="Center" Margin="619,122,70.2,0" VerticalAlignment="Top" Height="30" Width="250"/>
     </Grid>
 </Window>

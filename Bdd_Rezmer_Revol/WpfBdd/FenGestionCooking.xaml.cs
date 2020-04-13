@@ -30,7 +30,9 @@ namespace WpfBdd
         DataTable tableTop5;
         DataTable tableCommande;
         static string recetteSupprimee;
-        static string cuisinierSupprime;
+        static string cdrSupprime;
+        List<string> nomCdR = new List<string>();
+        List<int> compteurCdR = new List<int>();
         public FenGestionCooking(MySqlConnection connexion)
         {
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
@@ -53,21 +55,35 @@ namespace WpfBdd
             }
             */
             MySqlCommand commande = this.connexion.CreateCommand();
-            commande.CommandText = "SELECT nomRecette, type, prixDeVente, compteur, idCuisinier FROM recette ORDER BY compteur DESC;";
+            commande.CommandText = "SELECT nomRecette, type, prixDeVente, compteur, idCompte, idCuisinier FROM recette ORDER BY compteur DESC;";
             commande.ExecuteNonQuery();
             tableTop5 = new DataTable("Top 5 des recettes");
             MySqlDataAdapter dataAdp = new MySqlDataAdapter(commande);
             dataAdp.Fill(tableTop5);
             dataGridTop5.ItemsSource = tableTop5.DefaultView;
-            commande.CommandText = "SELECT nom, MAX(compteur), client.idCompte, recette.idCompte FROM client, recette WHERE client.idCompte=recette.idCompte;";
+            commande.CommandText = "SELECT nom, SUM(compteur) FROM client, recette WHERE client.idCompte=recette.idCompte GROUP BY nom;";
             MySqlDataReader reader = commande.ExecuteReader();
-            reader.Read();
-            string cdrSemaine = reader.GetString(0);
+            while (reader.Read())
+            {
+                nomCdR.Add(reader.GetString(0));
+                compteurCdR.Add(reader.GetInt32(1));
+            }
             reader.Close();
+            int compteur = 0;
+            string cdrSemaine="";
+            for (int i=0; i < nomCdR.Count; i++)
+            {
+                int compteur1 = compteurCdR[i];
+                if (compteur1 > compteur)
+                {
+                    compteur = compteur1;
+                    cdrSemaine = nomCdR[i];
+                }
+            }
             txtCdrWeek.Text = cdrSemaine;
             txtGoldenCdr.Text = cdrSemaine;
             recette_Combo();
-            cuisinier_Combo();
+            cdr_Combo();
         }
 
         private void btnRetour_Click(object sender, RoutedEventArgs e)
@@ -88,15 +104,15 @@ namespace WpfBdd
             reader.Close();
         }
 
-        void cuisinier_Combo()
+        void cdr_Combo()
         {
             MySqlCommand commande = this.connexion.CreateCommand();
-            commande.CommandText = "SELECT idCuisinier FROM cuisinier;";
+            commande.CommandText = "SELECT idCompte, nom FROM client WHERE soldeCook IS NOT NULL;";
             MySqlDataReader reader = commande.ExecuteReader();
             while (reader.Read())
             {
-                string nomCuisinier = reader.GetString(0);
-                comboBoxCuisinier.Items.Add(nomCuisinier);
+                string nomCdR = reader.GetString(0) + " " + reader.GetString(1);
+                comboBoxCdR.Items.Add(nomCdR);
             }
             reader.Close();
         }
@@ -107,9 +123,9 @@ namespace WpfBdd
             recetteSupprimee = comboBoxRecette.Text.ToString();   
         }
 
-        private void comboBoxCuisinier_DropDownClosed(object sender, EventArgs e)
+        private void comboBoxCdR_DropDownClosed(object sender, EventArgs e)
         {
-            cuisinierSupprime = comboBoxCuisinier.Text.ToString();
+            cdrSupprime = comboBoxCdR.Text.ToString();
         }
 
         private void btnSupprimerRecette_Click(object sender, RoutedEventArgs e)
@@ -122,7 +138,7 @@ namespace WpfBdd
                 MessageBox.Show("La recette " + recetteSupprimee + " a bien été supprimée.", "Information", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 comboBoxRecette.Items.Remove(comboBoxRecette.SelectedItem);
                 comboBoxRecette.SelectedItem = null;
-                commande.CommandText = "SELECT nomRecette, type, prixDeVente, compteur, idCuisinier FROM recette ORDER BY compteur DESC;";
+                commande.CommandText = "SELECT nomRecette, type, prixDeVente, compteur, idCompte, idCuisinier FROM recette ORDER BY compteur DESC;";
                 commande.ExecuteNonQuery();
                 tableTop5 = new DataTable("Top 5 des recettes");
                 MySqlDataAdapter dataAdp = new MySqlDataAdapter(commande);
@@ -136,17 +152,19 @@ namespace WpfBdd
             
         }
 
-        private void btnSupprimerCuisinier_Click(object sender, RoutedEventArgs e)
+        private void btnSupprimerCdR_Click(object sender, RoutedEventArgs e)
         {
-            if (comboBoxCuisinier.SelectedItem != null)
+            if (comboBoxCdR.SelectedItem != null)
             {
                 MySqlCommand commande = this.connexion.CreateCommand();
-                commande.CommandText = "DELETE FROM cuisinier WHERE idCuisinier=\"" + cuisinierSupprime + "\";"; ;
+                commande.CommandText = "UPDATE client SET soldeCook=NULL WHERE idCompte=\"" + cdrSupprime.Substring(0,4) + "\";"; ;
                 commande.ExecuteNonQuery();
-                MessageBox.Show("Le cusinier " + cuisinierSupprime + " a bien été supprimé.", "Information", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                comboBoxCuisinier.Items.Remove(comboBoxCuisinier.SelectedItem);
-                comboBoxCuisinier.SelectedItem = null;
-                commande.CommandText = "SELECT nomRecette, type, prixDeVente, compteur, idCuisinier FROM recette ORDER BY compteur DESC;";
+                commande.CommandText = "DELETE FROM recette WHERE idCompte=\"" + cdrSupprime.Substring(0, 4) + "\";"; ;
+                commande.ExecuteNonQuery();
+                MessageBox.Show(cdrSupprime + " n'est plus CdR. Ses recettes ont toutes été supprimées.", "Information", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                comboBoxCdR.Items.Remove(comboBoxCdR.SelectedItem);
+                comboBoxCdR.SelectedItem = null;
+                commande.CommandText = "SELECT nomRecette, type, prixDeVente, compteur, idCompte, idCuisinier FROM recette ORDER BY compteur DESC;";
                 commande.ExecuteNonQuery();
                 tableTop5 = new DataTable("Top 5 des recettes");
                 MySqlDataAdapter dataAdp = new MySqlDataAdapter(commande);

@@ -11,9 +11,10 @@ namespace Bdd_Rezmer_Revol
     {
         static void Main(string[] args)
         {
-           MySqlConnection connexion = CreationConnexion();
+            MySqlConnection connexion = CreationConnexion();
             connexion.Open();
-            CommandeSql(connexion, "SELECT * FROM client");
+            //CommandeSql(connexion, "SELECT * FROM client");
+            test(connexion);
             Console.ReadLine();
         }
         static MySqlConnection CreationConnexion()
@@ -27,7 +28,29 @@ namespace Bdd_Rezmer_Revol
             return connexion;
 
         }
-        static void CommandeSql(MySqlConnection connection, string  commande)
+        static void test(MySqlConnection connection)
+        {
+            MySqlCommand commande = connection.CreateCommand();
+            List<string> nomCdR = new List<string>();
+            List<int> compteurCdR = new List<int>();
+            commande.CommandText = "SELECT nom, SUM(compteur) FROM client, recette WHERE client.idCompte=recette.idCompte GROUP BY nom;";
+            MySqlDataReader reader = commande.ExecuteReader();
+            while (reader.Read())
+            {
+                nomCdR.Add(reader.GetString(0));
+                compteurCdR.Add(reader.GetInt32(1));
+            }
+            reader.Close();
+            foreach(string a in nomCdR)
+            {
+                Console.WriteLine(a);
+            }
+            foreach (int a in compteurCdR)
+            {
+                Console.WriteLine(a);
+            }
+        }
+        /*static void CommandeSql(MySqlConnection connection, string  commande)
         {
             MySqlCommand command = connection.CreateCommand();
             command.CommandText = commande;
@@ -45,6 +68,6 @@ namespace Bdd_Rezmer_Revol
                 Console.WriteLine(currentRowAsString); // affichage de la ligne ( sous forme d'une " grosse " string ) sur la sortie standard
             }
 
-        }
+        }*/
     }
 }
