@@ -109,7 +109,7 @@ INSERT INTO `cooking`.`produit` (`idProduit`, `nomProduit`, `categorie`, `uniteD
 INSERT INTO `cooking`.`produit` (`idProduit`, `nomProduit`, `categorie`, `uniteDeQuantite`, `stockActuel`,`stockMin`,`stockMax`,`refFournisseur`) VALUES ('P003', 'Baie de goji', 'fruit', 'piece', 80, 20, 200, 'F002');
 INSERT INTO `cooking`.`produit` (`idProduit`, `nomProduit`, `categorie`, `uniteDeQuantite`, `stockActuel`,`stockMin`,`stockMax`,`refFournisseur`) VALUES ('P004', 'Pommes de terre', 'legume', 'piece', 150, 60, 200, 'F001');
 INSERT INTO `cooking`.`produit` (`idProduit`, `nomProduit`, `categorie`, `uniteDeQuantite`, `stockActuel`,`stockMin`,`stockMax`,`refFournisseur`) VALUES ('P005', 'Olive', 'fruit', 'piece', 150, 60, 200, 'F002');
-INSERT INTO `cooking`.`produit` (`idProduit`, `nomProduit`, `categorie`, `uniteDeQuantite`, `stockActuel`,`stockMin`,`stockMax`,`refFournisseur`) VALUES ('P006', 'Veau', 'viande', 'piece' ,10, 2, 20, 'F003');
+INSERT INTO `cooking`.`produit` (`idProduit`, `nomProduit`, `categorie`, `uniteDeQuantite`, `stockActuel`,`stockMin`,`stockMax`,`refFournisseur`) VALUES ('P006', 'Veau', 'viande', 'grammes' ,2000, 8000, 20000, 'F003');
 INSERT INTO `cooking`.`produit` (`idProduit`, `nomProduit`, `categorie`, `uniteDeQuantite`, `stockActuel`,`stockMin`,`stockMax`,`refFournisseur`) VALUES ('P007', 'Farine T80','farine', 'grammes' ,10000, 20000, 100000, 'F004');
 INSERT INTO `cooking`.`produit` (`idProduit`, `nomProduit`, `categorie`, `uniteDeQuantite`, `stockActuel`,`stockMin`,`stockMax`,`refFournisseur`) VALUES ('P008', 'Oeufs', 'viande', 'piece', 80, 15, 160, 'F003');
 INSERT INTO `cooking`.`produit` (`idProduit`, `nomProduit`, `categorie`, `uniteDeQuantite`, `stockActuel`,`stockMin`,`stockMax`,`refFournisseur`) VALUES ('P009', 'Sucre', 'autre', 'kilos' ,35, 10, 100, 'F004');
@@ -119,8 +119,8 @@ INSERT INTO `cooking`.`produit` (`idProduit`, `nomProduit`, `categorie`, `uniteD
 INSERT INTO `cooking`.`produit` (`idProduit`, `nomProduit`, `categorie`, `uniteDeQuantite`, `stockActuel`,`stockMin`,`stockMax`,`refFournisseur`) VALUES ('P013', 'Cheddar', 'fromage', 'grammes', 2000, 8000, 14000, 'F005');
 INSERT INTO `cooking`.`produit` (`idProduit`, `nomProduit`, `categorie`, `uniteDeQuantite`, `stockActuel`,`stockMin`,`stockMax`,`refFournisseur`) VALUES ('P014', 'Parmesan', 'fromage', 'grammes', 2000, 8000, 14000, 'F005');
 INSERT INTO `cooking`.`produit` (`idProduit`, `nomProduit`, `categorie`, `uniteDeQuantite`, `stockActuel`,`stockMin`,`stockMax`,`refFournisseur`) VALUES ('P015', 'Mozzarela', 'fromage', 'grammes', 2000, 8000, 14000, 'F005');
-INSERT INTO `cooking`.`produit` (`idProduit`, `nomProduit`, `categorie`, `uniteDeQuantite`, `stockActuel`,`stockMin`,`stockMax`,`refFournisseur`) VALUES ('P016', 'Fromage de chèvre', 'fromage', 'grammes', 2000, 8000, 14000, 'F005');
-INSERT INTO `cooking`.`produit` (`idProduit`, `nomProduit`, `categorie`, `uniteDeQuantite`, `stockActuel`,`stockMin`,`stockMax`,`refFournisseur`) VALUES ('P017', 'Citron', 'fruit', 'piece', 10, 40, 80, 'F001');
+INSERT INTO `cooking`.`produit` (`idProduit`, `nomProduit`, `categorie`, `uniteDeQuantite`, `stockActuel`,`stockMin`,`stockMax`,`refFournisseur`) VALUES ('P016', 'Fromage de chèvre', 'fromage', 'grammes', 8000, 2000, 14000, 'F005');
+INSERT INTO `cooking`.`produit` (`idProduit`, `nomProduit`, `categorie`, `uniteDeQuantite`, `stockActuel`,`stockMin`,`stockMax`,`refFournisseur`) VALUES ('P017', 'Citron', 'fruit', 'piece', 25, 40, 80, 'F001');
 
 -- Table recette 
 INSERT INTO `cooking`.`recette` (`idRecette`, `nomRecette`, `type`, `prixDeVente`, `descriptif`,`compteur`,`idCompte`,`idCuisinier`) VALUES ('R001', 'Salade printanniere', 'Entrée', 4.00, 'Salade printaniere composee de tomates, olives, baie de goji',2,'K003','C002');
@@ -139,9 +139,9 @@ INSERT INTO `cooking`.`estConstitue` (`idRecette`, `idProduit`,`quantiteUtilisee
 INSERT INTO `cooking`.`estConstitue` (`idRecette`, `idProduit`,`quantiteUtilisee`) VALUES ('R002', 'P007',250);
 INSERT INTO `cooking`.`estConstitue` (`idRecette`, `idProduit`,`quantiteUtilisee`) VALUES ('R002', 'P008', 3);
 INSERT INTO `cooking`.`estConstitue` (`idRecette`, `idProduit`,`quantiteUtilisee`) VALUES ('R002', 'P009', 5);
-INSERT INTO `cooking`.`estConstitue` (`idRecette`, `idProduit`,`quantiteUtilisee`) VALUES ('R002', 'P010', 1);
+INSERT INTO `cooking`.`estConstitue` (`idRecette`, `idProduit`,`quantiteUtilisee`) VALUES ('R002', 'P010', 100);
 INSERT INTO `cooking`.`estConstitue` (`idRecette`, `idProduit`,`quantiteUtilisee`) VALUES ('R003', 'P004', 6);
-INSERT INTO `cooking`.`estConstitue` (`idRecette`, `idProduit`,`quantiteUtilisee`) VALUES ('R003', 'P006', 1);
+INSERT INTO `cooking`.`estConstitue` (`idRecette`, `idProduit`,`quantiteUtilisee`) VALUES ('R003', 'P006', 500);
 INSERT INTO `cooking`.`estConstitue` (`idRecette`, `idProduit`,`quantiteUtilisee`) VALUES ('R004', 'P002', 5);
 INSERT INTO `cooking`.`estConstitue` (`idRecette`, `idProduit`,`quantiteUtilisee`) VALUES ('R004', 'P013', 80);
 INSERT INTO `cooking`.`estConstitue` (`idRecette`, `idProduit`,`quantiteUtilisee`) VALUES ('R004', 'P014', 80);
