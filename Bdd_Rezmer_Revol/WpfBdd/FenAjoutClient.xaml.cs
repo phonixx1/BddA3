@@ -65,7 +65,7 @@ namespace WpfBdd
                     }
                     reader.Close();
                     commande.ExecuteNonQuery();
-                    MessageBox.Show("Creation de compte reussi");
+                    MessageBox.Show("Creation du compte réussie !");
                     cree = true;
                     this.Close();
                 }

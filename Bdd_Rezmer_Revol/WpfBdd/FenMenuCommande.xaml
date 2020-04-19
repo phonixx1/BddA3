@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfBdd"
         mc:Ignorable="d"
-        Title="FenMenuCommande" Height="450" Width="800">
+        Title="Commande" Height="450" Width="800"
+        Icon="cooking.ico">
     <Grid>
         <ComboBox Name="comboBoxRecette" HorizontalAlignment="Left" Margin="52,30,0,0" VerticalAlignment="Top" Width="250" DropDownClosed="comboBoxRecette_DropDownClosed"/>
         <Label Content="Numero de plat:" HorizontalAlignment="Left" Margin="383,30,0,0" VerticalAlignment="Top" Width="102" />

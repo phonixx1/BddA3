@@ -23,12 +23,14 @@ namespace WpfBdd
     {
         List<String> listChoix=new List<String>();
         MySqlConnection connexion;
-       
+        string idClient;
+
         public FenMenuCommande(MySqlConnection connexion)
         {
             InitializeComponent();
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.connexion = connexion;
+            this.idClient = MainWindow.IdCurrentClient;
             recette_Combo();
             listBoxCommande.ItemsSource = listChoix;  
         }
@@ -146,7 +148,7 @@ namespace WpfBdd
                     commandeBonne = false;
                     aRetirer.Add(eleme);
                     
-                    msg = "Pas assez de produit pour " + nombre + " " + eleme;
+                    msg = "Il n'y a pas assez de produits pour " + nombre + " " + eleme;
                     MessageBox.Show(msg);
                 }
                 reader.Close();
@@ -164,69 +166,96 @@ namespace WpfBdd
                 comboBoxRecette.Items.Add(elem);
                 listBoxCommande.Items.Refresh();
             }
+            bool messageCommandeValidee = true;
             if(commandeBonne)
             {
                 foreach( string elem in listChoix)
                 {
-
-                    commande.CommandText= "UPDATE recette set compteur = compteur+"+quantiteList[listChoix.IndexOf(elem)] +" where idRecette ='"+ elem.Substring(0, 4) + "';";
-                    commande.ExecuteNonQuery();
-                    commande.CommandText = "select * from commande where idRecette='" + elem.Substring(0, 4) + "' and idCompte='" + MainWindow.IdCurrentClient + "';";
-                    reader = commande.ExecuteReader();
-                    if(reader.HasRows)
-                    {
-                        reader.Close();
-                        commande.CommandText="UPDATE commande set quantite=quantite+"+ quantiteList[listChoix.IndexOf(elem)]+ " where idRecette='" + elem.Substring(0, 4) + "' and idCompte='" + MainWindow.IdCurrentClient + "';";
-                    }
-                    else
-                    {
-                        reader.Close();
-                        commande.CommandText = "INSERT INTO `cooking`.`commande` (`idRecette`, `idCompte`,`quantite`) VALUES('" + elem.Substring(0, 4) + "', '" + MainWindow.IdCurrentClient + "', " + quantiteList[listChoix.IndexOf(elem)] + ");";
-                    }
-                    commande.ExecuteNonQuery();
+                    bool solde = false;
+                    int solde1 = 0;
                     commande.CommandText = "select prixDeVente from recette where idRecette='" + elem.Substring(0, 4) + "';";
                     reader = commande.ExecuteReader();
                     reader.Read();
                     prixRecette = reader.GetInt32(0);
                     reader.Close();
-                    commande.CommandText = "UPDATE client set soldeCook = soldeCook - "+Convert.ToString(prixRecette)+" where idCompte = '" + MainWindow.IdCurrentClient + "';";
-                    commande.ExecuteNonQuery();
-                    commande.CommandText = "select compteur from recette where idRecette='" + elem.Substring(0, 4) + "';";
+                    commande.CommandText = "select soldeCook from client where idCompte='" + idClient + "';";
                     reader = commande.ExecuteReader();
                     reader.Read();
-                    compteurRecette = reader.GetInt32(0);
+                    solde = reader.IsDBNull(0);
                     reader.Close();
-                    if (compteurRecette > 10 && compteurRecette - Convert.ToInt32(quantiteList[listChoix.IndexOf(elem)]) < 10)
+                    if (solde == false)
                     {
-                        commande.CommandText= "UPDATE recette SET prixDeVente=prixDeVente+2  where idRecette='" + elem.Substring(0, 4) + "';";
-                        commande.ExecuteNonQuery();
-
+                        commande.CommandText = "select soldeCook from client where idCompte='" + idClient + "';";
+                        reader = commande.ExecuteReader();
+                        reader.Read();
+                        solde1 = reader.GetInt32(0);
+                        reader.Close();
                     }
-                    else if (compteurRecette > 50 && compteurRecette - Convert.ToInt32(quantiteList[listChoix.IndexOf(elem)]) < 50)
+                    if ((prixRecette * Convert.ToInt32(quantiteList[listChoix.IndexOf(elem)]) < solde1) || solde==true)
                     {
-                        commande.CommandText = "UPDATE recette SET prixDeVente=prixDeVente+5  where idRecette='" + elem.Substring(0, 4) + "';";
+                        commande.CommandText = "UPDATE recette set compteur = compteur+" + quantiteList[listChoix.IndexOf(elem)] + " where idRecette ='" + elem.Substring(0, 4) + "';";
                         commande.ExecuteNonQuery();
+                        commande.CommandText = "select * from commande where idRecette='" + elem.Substring(0, 4) + "' and idCompte='" + MainWindow.IdCurrentClient + "';";
+                        reader = commande.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            reader.Close();
+                            commande.CommandText = "UPDATE commande set quantite=quantite+" + quantiteList[listChoix.IndexOf(elem)] + " where idRecette='" + elem.Substring(0, 4) + "' and idCompte='" + MainWindow.IdCurrentClient + "';";
+                        }
+                        else
+                        {
+                            reader.Close();
+                            commande.CommandText = "INSERT INTO `cooking`.`commande` (`idRecette`, `idCompte`,`quantite`) VALUES('" + elem.Substring(0, 4) + "', '" + MainWindow.IdCurrentClient + "', " + quantiteList[listChoix.IndexOf(elem)] + ");";
+                        }
+                        commande.ExecuteNonQuery();
+                        commande.CommandText = "UPDATE client set soldeCook = soldeCook - " + quantiteList[listChoix.IndexOf(elem)] + "*" + Convert.ToString(prixRecette) + " where idCompte = '" + MainWindow.IdCurrentClient + "';";
+                        commande.ExecuteNonQuery();
+                        commande.CommandText = "select compteur from recette where idRecette='" + elem.Substring(0, 4) + "';";
+                        reader = commande.ExecuteReader();
+                        reader.Read();
+                        compteurRecette = reader.GetInt32(0);
+                        reader.Close();
+                        if (compteurRecette > 10 && compteurRecette - Convert.ToInt32(quantiteList[listChoix.IndexOf(elem)]) < 10)
+                        {
+                            commande.CommandText = "UPDATE recette SET prixDeVente=prixDeVente+2  where idRecette='" + elem.Substring(0, 4) + "';";
+                            commande.ExecuteNonQuery();
 
-                    }
-                    
-                    if (compteurRecette<50)
-                    {
-                        commande.CommandText = "UPDATE client SET soldeCook=soldeCook+2 where idCompte=(select idCompte from recette where idRecette='" + elem.Substring(0, 4) + "');";
+                        }
+                        else if (compteurRecette > 50 && compteurRecette - Convert.ToInt32(quantiteList[listChoix.IndexOf(elem)]) < 50)
+                        {
+                            commande.CommandText = "UPDATE recette SET prixDeVente=prixDeVente+5  where idRecette='" + elem.Substring(0, 4) + "';";
+                            commande.ExecuteNonQuery();
+
+                        }
+
+                        if (compteurRecette < 50)
+                        {
+                            commande.CommandText = "UPDATE client SET soldeCook=soldeCook+2*" + quantiteList[listChoix.IndexOf(elem)] + " where idCompte=(select idCompte from recette where idRecette='" + elem.Substring(0, 4) + "');";
+                        }
+                        else
+                        {
+                            commande.CommandText = "UPDATE client SET soldeCook=soldeCook+4*" + quantiteList[listChoix.IndexOf(elem)] + " where idCompte=(select idCompte from recette where idRecette='" + elem.Substring(0, 4) + "');";
+                        }
+                        commande.ExecuteNonQuery();
+                        commande.CommandText = "UPDATE produit natural join estconstitue natural join recette SET stockActuel=stockActuel-" + quantiteList[listChoix.IndexOf(elem)] + "*estconstitue.quantiteUtilisee where recette.idRecette='" + elem.Substring(0, 4) + "' and  recette.idRecette=estconstitue.idRecette and estconstitue.idProduit=produit.idProduit;";
+                        commande.ExecuteNonQuery();
                     }
                     else
                     {
-                        commande.CommandText = "UPDATE client SET soldeCook=soldeCook+4 where idCompte=(select idCompte from recette where idRecette='" + elem.Substring(0, 4) + "');";
+                        MessageBox.Show("Vous n'avez pas assez de cooks pour payer votre commande. Cette dernière est annulée.", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        messageCommandeValidee = false;
+                        this.Close();
                     }
-                    commande.ExecuteNonQuery();
-                    commande.CommandText = "UPDATE produit natural join estconstitue natural join recette SET stockActuel=stockActuel-"+ quantiteList[listChoix.IndexOf(elem)] + "*estconstitue.quantiteUtilisee where recette.idRecette='"+ elem.Substring(0, 4) + "' and  recette.idRecette=estconstitue.idRecette and estconstitue.idProduit=produit.idProduit;";
-                    commande.ExecuteNonQuery();
                 }
-                MessageBox.Show("Commande Validée tout les produits sont disponibles\nRedirection vers notre site de payement sécurisé...");
-                this.Close();
-            }
+                if (messageCommandeValidee)
+                {
+                    MessageBox.Show("Commande validée.\nTous les produits sont disponibles\nRedirection vers notre site de paiement sécurisé...");
+                    this.Close();
+                }
+            }    
             else
             {
-                MessageBox.Show("Les recettes dont les produits ne sont pas disponibles ont été enlevé. Veuillez verifiez votre commande");
+                MessageBox.Show("Les recettes dont les produits ne sont pas disponibles ont été enlevées. Veuillez vérifier votre commande.");
             }
          }
     }

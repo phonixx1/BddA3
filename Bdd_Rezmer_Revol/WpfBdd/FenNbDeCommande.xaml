@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:WpfBdd"
         mc:Ignorable="d"
         Title="Nombre Recette" Height="200" Width="300"
+        Icon="cooking.ico"
        
         >
     <Grid>
         <Label Name="lblNom" Content="Combien voulez vous de " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="274"/>
         <TextBox Name="textBoxNombre" HorizontalAlignment="Left" Height="23" Margin="96,82,0,0" TextWrapping="Wrap" TextAlignment="Right" Text="1" VerticalAlignment="Top" Width="100" />
         <Button Name="btnValider" Click="btnValider_Click" Content="Valider" HorizontalAlignment="Left" Margin="96,141,0,0" VerticalAlignment="Top" Width="75"/>
-
     </Grid>
 </Window>
