@@ -169,8 +169,13 @@ namespace WpfBdd
             {
                 foreach( string elem in listChoix)
                 {
+
                     commande.CommandText= "UPDATE recette set compteur = compteur+"+quantiteList[listChoix.IndexOf(elem)] +" where idRecette ='"+ elem.Substring(0, 4) + "';";
                     commande.ExecuteNonQuery();
+                    commande.CommandText = "INSERT INTO `cooking`.`commande` (`idRecette`, `idCompte`,`quantite`) VALUES('" + elem.Substring(0, 4) + "', '" + MainWindow.IdCurrentClient + "', " + quantiteList[listChoix.IndexOf(elem)] + ");";
+                    commande.ExecuteNonQuery();
+                    //commande.CommandText = "UPDATE client set soldeCook = soldeCook - 1 where idCompte = 'k001';";
+                    //commande.ExecuteNonQuery();
                     commande.CommandText = "select compteur from recette where idRecette='" + elem.Substring(0, 4) + "';";
                     reader = commande.ExecuteReader();
                     reader.Read();
