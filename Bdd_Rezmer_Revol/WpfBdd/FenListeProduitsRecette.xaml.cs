@@ -69,6 +69,8 @@ namespace WpfBdd
                 if (SelectedIndexes.Contains(tableProduit.Rows.IndexOf(row)))
                 {
                     tableChoix.Rows.Add(row.ItemArray);
+                    tableChoix.Rows[tableChoix.Rows.Count-1]["quantite"] = 1;
+
                     //tableProduit.Rows.Remove(row);
                     //dataGridProduit.Items.Refresh();
                 }
@@ -79,7 +81,7 @@ namespace WpfBdd
 
         private void dataGridProduit_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            if (e.PropertyName == "idProduit")
+             if (e.PropertyName == "idProduit")
             {
                 e.Column.IsReadOnly = true;
             }
@@ -95,6 +97,7 @@ namespace WpfBdd
             {
                 e.Column.IsReadOnly = true;
             }
+            
         }
 
         private void btnValider_Click(object sender, RoutedEventArgs e)
