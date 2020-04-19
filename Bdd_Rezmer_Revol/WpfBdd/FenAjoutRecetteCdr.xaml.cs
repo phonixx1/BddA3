@@ -39,11 +39,11 @@ namespace WpfBdd
             reader = command.ExecuteReader();
             reader.Read();
             int nb = Convert.ToInt32(reader.GetValue(0));
-            if (nb < 10)
+            if (nb <9)
             {
                 idNew = "R00" + (nb + 1).ToString();
             }
-            else if (nb > 10 && nb < 100)
+            else if (nb >= 10 && nb <99)
             {
                 idNew = "R0" + (nb + 1).ToString();
             }
