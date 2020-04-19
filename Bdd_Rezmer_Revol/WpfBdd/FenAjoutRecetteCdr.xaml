@@ -15,7 +15,7 @@
         <Label Content="Descriptif :" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="190" Height="45" Margin="140,240,291.33,0"   />
         <Label Content="      Produits :" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="156" Height="45" Margin="117,408,347.8,0"   />
         <Button Name="btnValiderRecette" Content="Valider la recette" Click="btnValiderRecette_Click" HorizontalAlignment="Center" Margin="348,493,325.6,0" VerticalAlignment="Top" Height="30" Width="120"/>
-        <TextBox Name="txtBoxNomRecette"  MaxLength="20" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Margin="409,90,0,0"/>
+        <TextBox Name="txtBoxNomRecette"  MaxLength="50" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Margin="409,90,0,0"/>
         <StackPanel >
             <ComboBox x:Name="comboType" IsEditable="False"  Height="30"  Margin="411,140,196.6,0">
                 <ComboBoxItem Content="Entrée"/>
@@ -24,7 +24,7 @@
             </ComboBox>
         </StackPanel>
         <TextBox Name="txtBoxPrix" MaxLength="25" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Margin="409,190,0,0"/>
-        <TextBox Name="txtBoxDescriptif"  MaxLength="20" HorizontalAlignment="Left" Height="141" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Margin="409,240,0,0"/>
+        <TextBox Name="txtBoxDescriptif"  MaxLength="256" HorizontalAlignment="Left" Height="141" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Margin="409,240,0,0"/>
         <Button Name="btnProduits" Click="btnProduits_Click" Content="Choisir" HorizontalAlignment="Center" Margin="409,412,264.6,0" VerticalAlignment="Top" Height="30" Width="120"/>
         <Button Name="btnCheckPrice" Click="btnCheckPrice_Click"  Content="Vérifier le prix" HorizontalAlignment="Center" Margin="633,190,40.6,0" VerticalAlignment="Top" Height="30" Width="120"/>
     </Grid>

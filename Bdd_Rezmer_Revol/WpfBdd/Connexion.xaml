@@ -12,7 +12,7 @@
         <Label Content="Mot de passe" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,100,0,0"  Width="82" />
         <TextBox Name="txtBoxId" HorizontalAlignment="Left" Height="25" Margin="160,50,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150"/>
         <PasswordBox Name="boxMdp" PasswordChar="*" KeyDown="boxMdp_KeyDown" Margin="160,100,0,0"  Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25"/>
-        <Button Name="btnValidation" Click="btnValidation_Click" Content="Valider" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="160,0,154.6,10.4" Width="79"/>
+        <Button Name="btnValidation" Click="btnValidation_Click" Content="Valider" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="160,0,152.6,10.4" Width="81"/>
 
     </Grid>
 </Window>
