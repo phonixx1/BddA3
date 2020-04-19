@@ -30,9 +30,9 @@ namespace WpfBdd
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             this.connexion = connexion;
             recette_Combo();
-            listBoxCommande.ItemsSource = listChoix;
-            
+            listBoxCommande.ItemsSource = listChoix;  
         }
+
         void recette_Combo()
         {
             MySqlCommand commande = this.connexion.CreateCommand();
@@ -45,8 +45,6 @@ namespace WpfBdd
             }
             reader.Close();
         }
-
-        
 
         private void comboBoxRecette_DropDownClosed(object sender, EventArgs e)
         {
@@ -200,19 +198,14 @@ namespace WpfBdd
                     commande.ExecuteNonQuery();
                     commande.CommandText = "UPDATE produit natural join estconstitue natural join recette SET stockActuel=stockActuel-"+ quantiteList[listChoix.IndexOf(elem)] + "*estconstitue.quantiteUtilisee where recette.idRecette='"+ elem.Substring(0, 4) + "' and  recette.idRecette=estconstitue.idRecette and estconstitue.idProduit=produit.idProduit;";
                     commande.ExecuteNonQuery();
-
-
-
                 }
                 MessageBox.Show("Commande Validée tout les produits sont disponibles\nRedirection vers notre site de payement sécurisé...");
                 this.Close();
-
             }
             else
             {
                 MessageBox.Show("Les recettes dont les produits ne sont pas disponibles ont été enlevé. Veuillez verifiez votre commande");
             }
-
          }
     }
 }

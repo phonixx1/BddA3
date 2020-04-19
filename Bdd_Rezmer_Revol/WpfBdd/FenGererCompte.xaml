@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:WpfBdd"
         mc:Ignorable="d"
         Title="Gérer son compte" Height="450" Width="800"
+        Icon="cooking.ico"
         Closing="Fermeture">
     <Grid>
         <Label Content="Gérer mon compte" FontFamily="comic sans ms" FontSize="20" Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Top" Width="184" Height="45" Margin="315,0,294.6,0"   />

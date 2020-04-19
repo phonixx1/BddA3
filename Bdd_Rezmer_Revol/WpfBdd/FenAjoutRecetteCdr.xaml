@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:WpfBdd"
         mc:Ignorable="d"
         Title="Ajouter une recette" Height="582.8" Width="800"
+        Icon="cooking.ico"
         Closing="Fermeture">
     <Grid>
         <Label Content="Ajouter une recette" FontFamily="comic sans ms" FontSize="20" Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" Height="45" Margin="310,10,283.6,0"   />

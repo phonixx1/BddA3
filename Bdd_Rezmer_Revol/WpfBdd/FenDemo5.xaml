@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfBdd"
         mc:Ignorable="d"
-        Title="FenDemo5" Height="758.132" Width="800">
+        Title="Démo Cooking" Height="758.132" Width="800"
+        Icon="cooking.ico">
     <Grid>
         <Label Content="Mode démo Cooking" FontWeight="Bold" FontFamily="comic sans ms" FontSize="24" Foreground="Orange" HorizontalAlignment="Center" VerticalAlignment="Top" Width="235" Height="45" Margin="287,30,271.6,0"  />
         <Label Content="Choisir le produit en très faible quantité :" FontFamily="comic sans ms" FontSize="20"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="420" Height="49" Margin="52,138,0,0"  />

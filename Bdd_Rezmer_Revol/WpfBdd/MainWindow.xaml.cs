@@ -91,10 +91,7 @@ namespace WpfBdd
             this.Hide();
             gestion.Owner = this;
             gestion.ShowDialog();
-            if (gestion.IsActive == false)
-            {
-                this.ShowDialog();
-            }
+            this.ShowDialog();
         }
 
         private void btnDemo_Click(object sender, RoutedEventArgs e)

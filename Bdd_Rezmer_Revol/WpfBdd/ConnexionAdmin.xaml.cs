@@ -26,6 +26,7 @@ namespace WpfBdd
         {
             InitializeComponent();
             this.connexion = connexion;
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
         private void boxMdpAdmin_KeyDown(object sender, KeyEventArgs e)
@@ -45,9 +46,17 @@ namespace WpfBdd
             } 
         }
 
-        void Fermeture(object sender, CancelEventArgs e)
+        private void btn_Connexion_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (boxMdpAdmin.Password.ToString() == "azertyqwerty92")
+            {
+                boxMdpAdmin.Clear();
+                this.DialogResult = true;
+            }
+            else
+            {
+                MessageBox.Show("Mot de passe incorrect", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
     }
 }
