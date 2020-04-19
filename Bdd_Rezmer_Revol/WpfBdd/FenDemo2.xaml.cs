@@ -35,7 +35,7 @@ namespace WpfBdd
             string nbCdR = reader.GetString(0);
             reader.Close();
             txtNbClient.Text = nbCdR;
-            commande.CommandText = "SELECT nom, SUM(compteur) FROM client, recette WHERE client.idCompte=recette.idCompte GROUP BY nom;";
+            commande.CommandText = "SELECT nom, SUM(compteur) as NombreRecettesCommandees FROM client, recette WHERE client.idCompte=recette.idCompte GROUP BY nom;";
             commande.ExecuteNonQuery();
             tableCdR = new DataTable("Récapitulatif");
             MySqlDataAdapter dataAdp = new MySqlDataAdapter(commande);

@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:WpfBdd"
         mc:Ignorable="d"
         Title="Menu client" Height="450" Width="800"
+        Icon="cooking.ico"
         Closing="Fermeture">
 
     <Grid>

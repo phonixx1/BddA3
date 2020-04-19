@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfBdd"
         mc:Ignorable="d"
-        Title="Connexion" Height="200" Width="400">
+        Title="Connexion" Height="200" Width="400"
+        Icon="db.ico">
     <Grid>
         <Label Content="Connexion BDD" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Blue" Width="100" Margin="149,0,144.6,0"/>
         <Label Content="    Identifiant" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,50,0,0" Width="82"/>

@@ -33,13 +33,13 @@ namespace WpfBdd
         static string cdrSupprime;
         List<string> nomCdR = new List<string>();
         List<int> compteurCdR = new List<int>();
+
         public FenGestionCooking(MySqlConnection connexion)
         {
             this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
             this.connexion = connexion;
-            ConnexionAdmin fenConnexion = new ConnexionAdmin(this.connexion);
-            /*
+            /*ConnexionAdmin fenConnexion = new ConnexionAdmin(this.connexion);
             this.Hide();
             fenConnexion.ShowDialog();
             if (fenConnexion.DialogResult == true)
@@ -52,10 +52,9 @@ namespace WpfBdd
             {
                 MessageBox.Show("Echec de la connexion");
                 this.Close();
-            }
-            */
+            }*/
             MySqlCommand commande = this.connexion.CreateCommand();
-            commande.CommandText = "SELECT nomRecette, type, prixDeVente, compteur, idCompte, idCuisinier FROM recette ORDER BY compteur DESC;";
+            commande.CommandText = "SELECT nomRecette, type, prixDeVente, compteur AS nombreCommandes, idCompte, idCuisinier FROM recette ORDER BY compteur DESC;";
             commande.ExecuteNonQuery();
             tableTop5 = new DataTable("Top 5 des recettes");
             MySqlDataAdapter dataAdp = new MySqlDataAdapter(commande);
@@ -138,7 +137,7 @@ namespace WpfBdd
                 MessageBox.Show("La recette " + recetteSupprimee + " a bien été supprimée.", "Information", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 comboBoxRecette.Items.Remove(comboBoxRecette.SelectedItem);
                 comboBoxRecette.SelectedItem = null;
-                commande.CommandText = "SELECT nomRecette, type, prixDeVente, compteur, idCompte, idCuisinier FROM recette ORDER BY compteur DESC;";
+                commande.CommandText = "SELECT nomRecette, type, prixDeVente, compteur AS nombreCommandes, idCompte, idCuisinier FROM recette ORDER BY compteur DESC;";
                 commande.ExecuteNonQuery();
                 tableTop5 = new DataTable("Top 5 des recettes");
                 MySqlDataAdapter dataAdp = new MySqlDataAdapter(commande);
@@ -164,7 +163,7 @@ namespace WpfBdd
                 MessageBox.Show(cdrSupprime + " n'est plus CdR. Ses recettes ont toutes été supprimées.", "Information", MessageBoxButton.OK, MessageBoxImage.Asterisk);
                 comboBoxCdR.Items.Remove(comboBoxCdR.SelectedItem);
                 comboBoxCdR.SelectedItem = null;
-                commande.CommandText = "SELECT nomRecette, type, prixDeVente, compteur, idCompte, idCuisinier FROM recette ORDER BY compteur DESC;";
+                commande.CommandText = "SELECT nomRecette, type, prixDeVente, compteur AS nombreCommandes, idCompte, idCuisinier FROM recette ORDER BY compteur DESC;";
                 commande.ExecuteNonQuery();
                 tableTop5 = new DataTable("Top 5 des recettes");
                 MySqlDataAdapter dataAdp = new MySqlDataAdapter(commande);

@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfBdd"
         mc:Ignorable="d"
-        Title="Produits composant la recette à créer" Height="600" Width="1162.069">
+        Title="Produits composant la recette à créer" Height="600" Width="1162.069"
+        Icon="cooking.ico">
     <Grid>
         <Label Content="Produits disponibles" FontFamily="comic sans ms" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Width="209" Height="45" Margin="146,22,801,0"  />
         <Label Content="Produits de la future recette" FontFamily="comic sans ms" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Width="288" Height="45" Margin="784,22,84,0"  />

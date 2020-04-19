@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfBdd"
         mc:Ignorable="d"
-        Title="FenDemo4" Height="615.367" Width="800">
+        Title="Démo Cooking" Height="615.367" Width="800"
+        Icon="cooking.ico">
     <Grid>
         <Label Content="Mode démo Cooking" FontWeight="Bold" FontFamily="comic sans ms" FontSize="24" Foreground="Orange" HorizontalAlignment="Center" VerticalAlignment="Top" Width="235" Height="45" Margin="287,30,271.6,0"  />
         <Button Name="btnSuivant" Click="btnSuivant_Click" Content="Suivant" FontSize="20"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="45" Margin="318,503,0,0"/>

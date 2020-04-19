@@ -6,11 +6,12 @@
         xmlns:local="clr-namespace:WpfBdd"
         mc:Ignorable="d"
         Title="Application Cooking" Height="450" Width="800"
+        Icon="cooking.ico"
         Closing="Fermeture">
 
     <Grid >
         <Grid.Background >
-            <ImageBrush Opacity="0.6" ImageSource="wpfBdd.jpg"/>
+            <ImageBrush Opacity="0.5" ImageSource="wpfBdd.jpg"/>
         </Grid.Background>
         <Label Content="Bienvenue sur Cooking" FontWeight="Bold" FontFamily="comic sans ms" FontSize="24" Foreground="Red" HorizontalAlignment="Center" VerticalAlignment="Top" Width="270" Height="45" Margin="267,35,256.6,0"  />
         <Label Content="Id client" FontFamily="comic sans ms" FontSize="20"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="126" Height="45" Margin="249,150,0,0"  />

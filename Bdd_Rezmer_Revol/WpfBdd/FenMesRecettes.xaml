@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:WpfBdd"
         mc:Ignorable="d"
         Title="FenMesRecettes" Height="688.842" Width="800"
+        Icon="cooking.ico"
         Closing="Fermeture">
     <Grid>
         <DataGrid Name="dataGridMesRecettes" AutoGenerateColumns="True" HorizontalAlignment="Left" Height="427" Margin="10,101,0,0" VerticalAlignment="Top" Width="774"/>
