@@ -157,8 +157,6 @@ namespace WpfBdd
                     break;
                 }
                 quantiteList.Add(nombre);
-                
-
             }
             foreach(string elem in aRetirer)
             {

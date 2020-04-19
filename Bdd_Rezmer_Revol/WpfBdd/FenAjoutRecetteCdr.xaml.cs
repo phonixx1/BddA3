@@ -43,7 +43,7 @@ namespace WpfBdd
             {
                 idNew = "R00" + (nb + 1).ToString();
             }
-            else if (nb >= 10 && nb <99)
+            else if (nb >= 9 && nb <99)
             {
                 idNew = "R0" + (nb + 1).ToString();
             }
