@@ -123,6 +123,7 @@ namespace WpfBdd
             List<String> quantiteList = new List<String>();
             int compteurRecette;
             List<String> idProduitAdecrementer= new List<String>();
+            int prixRecette;
 
             foreach (string eleme in listChoix)
             {
@@ -170,10 +171,26 @@ namespace WpfBdd
 
                     commande.CommandText= "UPDATE recette set compteur = compteur+"+quantiteList[listChoix.IndexOf(elem)] +" where idRecette ='"+ elem.Substring(0, 4) + "';";
                     commande.ExecuteNonQuery();
-                    commande.CommandText = "INSERT INTO `cooking`.`commande` (`idRecette`, `idCompte`,`quantite`) VALUES('" + elem.Substring(0, 4) + "', '" + MainWindow.IdCurrentClient + "', " + quantiteList[listChoix.IndexOf(elem)] + ");";
+                    commande.CommandText = "select * from commande where idRecette='" + elem.Substring(0, 4) + "' and idCompte='" + MainWindow.IdCurrentClient + "';";
+                    reader = commande.ExecuteReader();
+                    if(reader.HasRows)
+                    {
+                        reader.Close();
+                        commande.CommandText="UPDATE commande set quantite=quantite+"+ quantiteList[listChoix.IndexOf(elem)]+ " where idRecette='" + elem.Substring(0, 4) + "' and idCompte='" + MainWindow.IdCurrentClient + "';";
+                    }
+                    else
+                    {
+                        reader.Close();
+                        commande.CommandText = "INSERT INTO `cooking`.`commande` (`idRecette`, `idCompte`,`quantite`) VALUES('" + elem.Substring(0, 4) + "', '" + MainWindow.IdCurrentClient + "', " + quantiteList[listChoix.IndexOf(elem)] + ");";
+                    }
                     commande.ExecuteNonQuery();
-                    //commande.CommandText = "UPDATE client set soldeCook = soldeCook - 1 where idCompte = 'k001';";
-                    //commande.ExecuteNonQuery();
+                    commande.CommandText = "select prixDeVente from recette where idRecette='" + elem.Substring(0, 4) + "';";
+                    reader = commande.ExecuteReader();
+                    reader.Read();
+                    prixRecette = reader.GetInt32(0);
+                    reader.Close();
+                    commande.CommandText = "UPDATE client set soldeCook = soldeCook - "+Convert.ToString(prixRecette)+" where idCompte = '" + MainWindow.IdCurrentClient + "';";
+                    commande.ExecuteNonQuery();
                     commande.CommandText = "select compteur from recette where idRecette='" + elem.Substring(0, 4) + "';";
                     reader = commande.ExecuteReader();
                     reader.Read();
@@ -194,11 +211,11 @@ namespace WpfBdd
                     
                     if (compteurRecette<50)
                     {
-                        commande.CommandText = "UPDATE client SET soldeCook=soldeCook+2 where idCompte='" + MainWindow.IdCurrentClient + "';";
+                        commande.CommandText = "UPDATE client SET soldeCook=soldeCook+2 where idCompte=(select idCompte from recette where idRecette='" + elem.Substring(0, 4) + "');";
                     }
                     else
                     {
-                        commande.CommandText = "UPDATE client SET soldeCook=soldeCook+4 where idCompte0='" + MainWindow.IdCurrentClient + "';";
+                        commande.CommandText = "UPDATE client SET soldeCook=soldeCook+4 where idCompte=(select idCompte from recette where idRecette='" + elem.Substring(0, 4) + "');";
                     }
                     commande.ExecuteNonQuery();
                     commande.CommandText = "UPDATE produit natural join estconstitue natural join recette SET stockActuel=stockActuel-"+ quantiteList[listChoix.IndexOf(elem)] + "*estconstitue.quantiteUtilisee where recette.idRecette='"+ elem.Substring(0, 4) + "' and  recette.idRecette=estconstitue.idRecette and estconstitue.idProduit=produit.idProduit;";
