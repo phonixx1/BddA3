@@ -16,6 +16,7 @@ using MySql.Data.MySqlClient;
 using System.Data;
 using System.Xml;
 using System.ComponentModel;
+using System.Xml.Serialization;
 
 
 namespace WpfBdd
@@ -25,10 +26,9 @@ namespace WpfBdd
     /// </summary>
     public partial class FenGestionCooking : Window
     {
-        
+
         MySqlConnection connexion;
         DataTable tableTop5;
-        DataTable tableCommande;
         static string recetteSupprimee;
         static string cdrSupprime;
         List<string> nomCdR = new List<string>();
@@ -69,8 +69,8 @@ namespace WpfBdd
             }
             reader.Close();
             int compteur = 0;
-            string cdrSemaine="";
-            for (int i=0; i < nomCdR.Count; i++)
+            string cdrSemaine = "";
+            for (int i = 0; i < nomCdR.Count; i++)
             {
                 int compteur1 = compteurCdR[i];
                 if (compteur1 > compteur)
@@ -119,7 +119,7 @@ namespace WpfBdd
 
         private void comboBoxRecette_DropDownClosed(object sender, EventArgs e)
         {
-            recetteSupprimee = comboBoxRecette.Text.ToString();   
+            recetteSupprimee = comboBoxRecette.Text.ToString();
         }
 
         private void comboBoxCdR_DropDownClosed(object sender, EventArgs e)
@@ -148,7 +148,7 @@ namespace WpfBdd
             {
                 MessageBox.Show("Vous n'avez rien sélectionné", "Attention", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-            
+
         }
 
         private void btnSupprimerCdR_Click(object sender, RoutedEventArgs e)
@@ -156,7 +156,7 @@ namespace WpfBdd
             if (comboBoxCdR.SelectedItem != null)
             {
                 MySqlCommand commande = this.connexion.CreateCommand();
-                commande.CommandText = "UPDATE client SET soldeCook=NULL WHERE idCompte=\"" + cdrSupprime.Substring(0,4) + "\";"; ;
+                commande.CommandText = "UPDATE client SET soldeCook=NULL WHERE idCompte=\"" + cdrSupprime.Substring(0, 4) + "\";"; ;
                 commande.ExecuteNonQuery();
                 commande.CommandText = "DELETE FROM recette WHERE idCompte=\"" + cdrSupprime.Substring(0, 4) + "\";"; ;
                 commande.ExecuteNonQuery();
@@ -178,25 +178,54 @@ namespace WpfBdd
 
         private void btnXML_Click(object sender, RoutedEventArgs e)
         {
-
             string path = "D:/ESILV/2019 2020/Semestre 6/Base de données/TD/DM";
-            //string path = Directory.GetCurrentDirectory();
-            XmlWriter writer = XmlWriter.Create(path+"/test.xml");
-            writer.Close();
+            genererXML(path);
+            MessageBox.Show("Le fichier de commande .XML a bien été généré dans le répertoire " + path, "Information");
+        }
+
+        private void genererXML(string path)
+        {
+            List<Fournisseur> listeCommande = new List<Fournisseur>();
             MySqlCommand commande = this.connexion.CreateCommand();
-            commande.CommandText = "SELECT produit.idProduit, nomProduit, produit.refFournisseur, nomF FROM produit, fournisseur WHERE produit.refFournisseur = fournisseur.refFournisseur AND produit.stockActuel < produit.stockMin ORDER BY produit.refFournisseur;";
-            commande.ExecuteNonQuery();
-            tableCommande = new DataTable("Fournisseur");
-            MySqlDataAdapter dataAdp = new MySqlDataAdapter(commande);
-            dataAdp.Fill(tableCommande);
-            tableCommande.WriteXml(path+"/test.xml");
-            commande.CommandText = "SELECT produit.idProduit, nomProduit, produit.refFournisseur, nomF FROM produit, fournisseur WHERE produit.refFournisseur = fournisseur.refFournisseur AND produit.stockActuel < produit.stockMin ORDER BY produit.idProduit;";
-            commande.ExecuteNonQuery();
-            tableCommande = new DataTable("Produit");
-            dataAdp = new MySqlDataAdapter(commande);
-            dataAdp.Fill(tableCommande);
-            tableCommande.WriteXml("D:/ESILV/2019 2020/Semestre 6/Base de données/TD/DM/test.xml");
-            MessageBox.Show("Le fichier .XML a bien été généré dans le répertoire " + path,"Information");
+            commande.CommandText = "SELECT nomF, produit.refFournisseur FROM produit, fournisseur WHERE produit.refFournisseur = fournisseur.refFournisseur AND produit.stockActuel < produit.stockMin GROUP BY produit.refFournisseur ORDER BY produit.refFournisseur;";
+            MySqlDataReader reader = commande.ExecuteReader();
+            while (reader.Read())
+            {
+                Fournisseur nouveau = new Fournisseur();
+                List<Produit> newListe = new List<Produit>();
+                nouveau.NomF = reader.GetString(0);
+                nouveau.IdF = reader.GetString(1);
+                nouveau.ListeProduits = newListe;
+                listeCommande.Add(nouveau);
+            }
+            reader.Close();
+            Commande newCommande = new Commande();
+            newCommande.ListeCommande = listeCommande;
+            commande.CommandText = "SELECT produit.refFournisseur, produit.idProduit, nomProduit, produit.stockMax - produit.stockActuel AS quantiteCommandee, produit.uniteDeQuantite FROM produit, fournisseur WHERE produit.refFournisseur = fournisseur.refFournisseur AND produit.stockActuel < produit.stockMin ORDER BY produit.refFournisseur;";
+            MySqlDataReader reader1 = commande.ExecuteReader();
+            while (reader1.Read())
+            {
+                Produit nouveauP = new Produit();
+                nouveauP.NomP = reader1.GetString(2);
+                nouveauP.IdP = reader1.GetString(1);
+                nouveauP.Quantite = reader1.GetString(3);
+                nouveauP.Unite = reader1.GetString(4);
+                foreach(Fournisseur f in listeCommande)
+                {
+                    if (f.IdF == reader1.GetString(0))
+                    {
+                        f.ListeProduits.Add(nouveauP);
+                    }
+                }
+            }
+            reader1.Close();
+            XmlSerializer xs = new XmlSerializer(typeof(Commande));
+            XmlWriter writer = XmlWriter.Create(path + "/commandes.xml");
+            writer.Close();
+            StreamWriter wr = new StreamWriter(path + "/commandes.xml");
+            xs.Serialize(wr, newCommande);
+            wr.Close();
         }
     }
 }
+
