@@ -50,3 +50,7 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+*.cache
+*.cache
+*.txt
+Bdd_Rezmer_Revol/.vs/Bdd_Rezmer_Revol/v16/.suo

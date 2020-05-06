@@ -37,7 +37,7 @@ namespace WpfBdd
                 if (boxMdpAdmin.Password.ToString() == "azertyqwerty92")
                 {
                     boxMdpAdmin.Clear();
-                    this.DialogResult = true;
+                    this.DialogResult = true;   
                 }
                 else
                 {
