@@ -10,9 +10,9 @@
     <Grid>
         <Label Content="Tableau de bord" FontFamily="comic sans ms" FontSize="20" Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Top" Width="167" Height="45" Margin="320,10,306.6,0"   />
         <Label Content="CdR de la semaine :" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="175" Height="45" Margin="38,93,726.2,0"   />
-        <TextBox Name="txtCdrWeek" HorizontalAlignment="Left" MaxLength="4" Height="23" Margin="237,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+        <TextBox Name="txtCdrWeek" IsReadOnly="True" HorizontalAlignment="Left" MaxLength="4" Height="23" Margin="237,142,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
         <Label Content="CdR d'or :" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="98" Height="45" Margin="115,136,726.2,0"   />
-        <TextBox Name="txtGoldenCdr" HorizontalAlignment="Left" MaxLength="4" Height="23" Margin="237,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
+        <TextBox Name="txtGoldenCdr" IsReadOnly="True" HorizontalAlignment="Left" MaxLength="4" Height="23" Margin="237,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200"/>
         <Label Content="Top 5 des recettes" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="171" Height="45" Margin="210,221,558.2,0"   />
         <DataGrid Name="dataGridTop5" AutoGenerateColumns="True" CanUserSortColumns="False" HorizontalAlignment="Left" Height="312" Margin="10,266,0,0" VerticalAlignment="Top" Width="577"/>
         <Button Name="btnRetour" Click="btnRetour_Click" Content="Retour" HorizontalAlignment="Center" Margin="419,641,400.2,0" VerticalAlignment="Top" Height="30" Width="120" RenderTransformOrigin="0.361,0.58"/>
