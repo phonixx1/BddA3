@@ -17,8 +17,6 @@ namespace UnitTestProject
         public void TestOuvertureConnection()
         {
             bool ouverture;
-            
-           
             try
             {
                 string connexionString = "SERVER=localhost;PORT=3306;DATABASE=cooking;UID=" + iD + ";PASSWORD=" + mdp1;
@@ -26,7 +24,6 @@ namespace UnitTestProject
                 connexion.Open();
                 connexion.Close();
                 ouverture = true;
-
             }
             catch
             {

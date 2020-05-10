@@ -249,5 +249,11 @@
   <ItemGroup>
     <Resource Include="db.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="59454819.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="7169187595.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

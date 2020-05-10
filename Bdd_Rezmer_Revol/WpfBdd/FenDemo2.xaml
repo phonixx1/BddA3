@@ -8,6 +8,9 @@
         Title="Démo Cooking" Height="621.919" Width="800"
         Icon="cooking.ico">
     <Grid>
+        <Grid.Background >
+            <ImageBrush Opacity="0.4" ImageSource="59454819.jpg"/>
+        </Grid.Background>
         <Label Content="Mode démo Cooking" FontWeight="Bold" FontFamily="comic sans ms" FontSize="24" Foreground="Orange" HorizontalAlignment="Center" VerticalAlignment="Top" Width="235" Height="45" Margin="287,30,271.6,0"  />
         <Label Content="  Nombre de CdR :" FontFamily="comic sans ms" FontSize="20"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="211" Height="45" Margin="154,100,428.6,0"   />
         <Button Name="btnSuivant" Click="btnSuivant_Click" Content="Suivant" FontSize="20"  HorizontalAlignment="Left" VerticalAlignment="Top" Width="158" Height="45" Margin="318,503,0,0"/>

@@ -9,6 +9,9 @@
         Icon="cooking.ico"
         Closing="Fermeture">
     <Grid>
+        <Grid.Background >
+            <ImageBrush Opacity="0.4" ImageSource="7169187595.jpg"/>
+        </Grid.Background>
         <Label Content="Inscription Cooking" FontFamily="comic sans ms" FontSize="20" Foreground="Blue" HorizontalAlignment="Center" VerticalAlignment="Top" Width="190" Height="45" Margin="0,0,0,0"   />
         <Label Content="Je suis :" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="190" Height="45" Margin="10,90,193.6,0"   />
         <Label Content="Nom :" FontFamily="comic sans ms" FontSize="18"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="86" Height="45" Margin="10,150,297.6,0"   />
