@@ -31,6 +31,7 @@ namespace WpfBdd
             InitializeComponent();
             this.connexion = connexion;
             this.idNew = idNew;
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             MySqlCommand commande = this.connexion.CreateCommand();
             commande.CommandText = "DELETE FROM estConstitue WHERE idRecette=\"" + idNew + "\";";
             commande.ExecuteNonQuery();

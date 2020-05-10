@@ -32,6 +32,7 @@ namespace WpfBdd
             InitializeComponent();
             this.idClient = MainWindow.IdCurrentClient;
             this.connexion = connexion;
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             idNew = "";
             MySqlDataReader reader = null;
             MySqlCommand command = connexion.CreateCommand();

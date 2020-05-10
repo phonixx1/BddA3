@@ -29,6 +29,7 @@ namespace WpfBdd
             InitializeComponent();
             this.connexion = connexion;
             this.idClient = MainWindow.IdCurrentClient;
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
         private void btnChangerId_Click(object sender, RoutedEventArgs e)
         {

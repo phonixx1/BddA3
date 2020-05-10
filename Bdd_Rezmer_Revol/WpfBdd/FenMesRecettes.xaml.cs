@@ -31,6 +31,7 @@ namespace WpfBdd
             InitializeComponent();
             this.idClient = MainWindow.IdCurrentClient;
             this.connexion = connexion;
+            this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             MySqlCommand commande = this.connexion.CreateCommand();
             commande.CommandText = "SELECT * FROM recette WHERE idCompte=\"" + idClient + "\";";
             commande.ExecuteNonQuery();
